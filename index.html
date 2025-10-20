@@ -2,29 +2,32 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Faisal Alsharari - Developer</title>
+  <title>Faisal Alsharari - Network & Software Engineer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <style>
     body {
       margin: 0;
-      font-family: 'Courier New', monospace;
-      background: #000;
-      color: #00ff00;
+      font-family: 'Segoe UI', sans-serif;
+      background: #0a0a0a;
+      color: #e0e0e0;
       overflow-x: hidden;
     }
-    .matrix {
+    .background-grid {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: black;
+      background-image: linear-gradient(90deg, #1a1a1a 1px, transparent 1px),
+                        linear-gradient(180deg, #1a1a1a 1px, transparent 1px);
+      background-size: 40px 40px;
       z-index: -1;
-      overflow: hidden;
+      animation: moveGrid 20s linear infinite;
     }
-    canvas {
-      display: block;
+    @keyframes moveGrid {
+      0% { background-position: 0 0; }
+      100% { background-position: 100px 100px; }
     }
     header {
       text-align: center;
@@ -32,12 +35,12 @@
     }
     header h1 {
       font-size: 3em;
-      color: #00ff00;
-      text-shadow: 0 0 20px #00ff00;
+      color: #00c8ff;
+      text-shadow: 0 0 10px #00c8ff;
     }
     header p {
       font-size: 1.2em;
-      color: #0f0;
+      color: #ccc;
     }
     .lang-switch {
       position: fixed;
@@ -46,7 +49,7 @@
       z-index: 999;
     }
     .lang-switch button {
-      background: #00ff00;
+      background: #00c8ff;
       color: #000;
       border: none;
       padding: 8px 16px;
@@ -60,15 +63,15 @@
       margin: auto;
     }
     h2 {
-      color: #0f0;
+      color: #00c8ff;
       margin-bottom: 20px;
-      text-shadow: 0 0 10px #0f0;
+      text-shadow: 0 0 5px #00c8ff;
     }
     .btn {
       display: inline-block;
       margin: 10px;
       padding: 12px 20px;
-      background: #00ff00;
+      background: #00c8ff;
       color: #000;
       text-decoration: none;
       border-radius: 8px;
@@ -81,10 +84,10 @@
       margin-top: 30px;
     }
     .card {
-      background: #111;
+      background: #1a1a1a;
       padding: 20px;
       border-radius: 10px;
-      box-shadow: 0 0 10px #0f0;
+      box-shadow: 0 0 10px #000;
       transition: transform 0.3s;
     }
     .card:hover {
@@ -101,16 +104,14 @@
     footer {
       text-align: center;
       padding: 40px;
-      background: #000;
-      color: #0f0;
+      background: #0a0a0a;
+      color: #777;
       font-size: 0.9em;
     }
   </style>
 </head>
 <body>
-  <div class="matrix">
-    <canvas id="matrixCanvas"></canvas>
-  </div>
+  <div class="background-grid"></div>
 
   <div class="lang-switch">
     <button onclick="switchLang()">العربية</button>
@@ -118,7 +119,7 @@
 
   <header data-aos="fade-down">
     <h1>Faisal Alsharari</h1>
-    <p>Developer • Network Engineer • VRChat Creator</p>
+    <p>Network & Software Engineer • VRChat Developer</p>
     <a href="#cv" class="btn">CV</a>
     <a href="#achievements" class="btn">Achievements</a>
     <a href="#certificates" class="btn">Certificates</a>
@@ -186,32 +187,6 @@
     function switchLang() {
       window.location.href = "arabic.html";
     }
-
-    // Matrix background effect
-    const canvas = document.getElementById("matrixCanvas");
-    const ctx = canvas.getContext("2d");
-    canvas.height = window.innerHeight;
-    canvas.width = window.innerWidth;
-    const letters = "01";
-    const fontSize = 14;
-    const columns = canvas.width / fontSize;
-    const drops = Array(Math.floor(columns)).fill(1);
-
-    function drawMatrix() {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = "#0f0";
-      ctx.font = fontSize + "px monospace";
-      for (let i = 0; i < drops.length; i++) {
-        const text = letters[Math.floor(Math.random() * letters.length)];
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-          drops[i] = 0;
-        }
-        drops[i]++;
-      }
-    }
-    setInterval(drawMatrix, 50);
   </script>
 </body>
 </html>
