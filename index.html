@@ -75,14 +75,16 @@
     }
 
     .btn {
-      display: inline-block;
-      margin: 10px;
+      display: block;
+      width: 220px;
+      margin: 10px auto;
       padding: 12px 20px;
       background: #00e0ff;
       color: #000;
       text-decoration: none;
       border-radius: 8px;
       font-weight: bold;
+      text-align: center;
       transition: 0.3s;
     }
 
@@ -169,15 +171,15 @@
     <div class="cards">
       <div class="card">
         <h3 id="proj1Title">مبرمج وشبكات</h3>
-        <p id="proj1Desc">صممت ونفذت حلول برمجية متقدمة مع مراعاة الشبكات وأمن البيانات، لإدارة الأنظمة الصغيرة والمتوسطة.</p>
+        <p id="proj1Desc">كتبت سكربتات وبرامج لأتمتة الشبكات، إدارة البيانات، والتحكم في الأجهزة المختلفة باستخدام تقنيات متنوعة.</p>
       </div>
       <div class="card">
         <h3 id="proj2Title">تطوير البرامج</h3>
-        <p id="proj2Desc">طورت برامج لتسهيل العمليات، أتمتة المهام، وإدارة البيانات بشكل آمن، بما يتوافق مع احتياجات الشركات والمشاريع.</p>
+        <p id="proj2Desc">صممت برامج لإدارة المهام والملفات وتسهيل العمليات الداخلية للشركات الصغيرة والمتوسطة، مع مراعاة الأمن والكفاءة.</p>
       </div>
       <div class="card">
         <h3 id="proj3Title">تطوير الألعاب</h3>
-        <p id="proj3Desc">طورت ألعاب 2D و3D للكمبيوتر والموبايل، مع دعم اللعب الجماعي والتواصل الشبكي، ودمج ميزات الذكاء الاصطناعي.</p>
+        <p id="proj3Desc">طورت ألعاب 2D و3D للكمبيوتر والموبايل، مع دعم اللعب الجماعي، وتطبيق بعض الميزات الذكية لتحسين تجربة المستخدم.</p>
       </div>
     </div>
   </section>
@@ -199,7 +201,7 @@
       </div>
       <div class="card">
         <h3>هاكاثونات ومسابقات</h3>
-        <p>المشاركة في عدة مسابقات تطوير برمجيات وألعاب وحصول على جوائز ابتكار.</p>
+        <p>المشاركة في مسابقات تطوير برمجيات وألعاب وحصول على جوائز ابتكار.</p>
       </div>
     </div>
   </section>
@@ -244,22 +246,19 @@
         role: "Computer & Network Engineer • Software & Game Developer",
         btnCV: "CV",
         btnProjects: "Projects",
-        btnAchievements: "Achievements",
-        btnCertificates: "Certificates",
-        btnContact: "Contact",
+        btnAchievements: "🏆 الإنجازات",
+        btnCertificates: "📜 الشهادات",
+        btnContact: "📬 تواصل",
         cvTitle: "📄 CV Files",
         cvEN: "English CV",
         cvAR: "Arabic CV",
-        projectsTitle: "💻 Projects & Software",
+        projectsTitle: "💻 Interests & Projects",
         proj1Title: "Programming & Networking",
-        proj1Desc: "Designed and implemented advanced software solutions with networking and data security considerations for small to medium systems.",
+        proj1Desc: "Created scripts and software for automating networks, data management, and controlling devices with various technologies.",
         proj2Title: "Software Development",
-        proj2Desc: "Developed software for process optimization, task automation, and secure data management for businesses and projects.",
+        proj2Desc: "Designed software for task/file management and workflow optimization, with security and efficiency considerations.",
         proj3Title: "Game Development",
-        proj3Desc: "Developed 2D & 3D games for PC and mobile platforms, including multiplayer support and AI integration.",
-        achievementsTitle: "🏆 Achievements",
-        certificatesTitle: "📜 Certificates",
-        contactTitle: "📬 Contact"
+        proj3Desc: "Developed 2D & 3D games for PC and mobile, including multiplayer support and basic smart features for better user experience."
       }
     };
 
@@ -299,11 +298,11 @@
         document.getElementById('cvAR').innerText = "السيرة بالعربية";
         document.getElementById('projectsTitle').innerText = "💻 اهتمامات ومشاريع";
         document.getElementById('proj1Title').innerText = "مبرمج وشبكات";
-        document.getElementById('proj1Desc').innerText = "صممت ونفذت حلول برمجية متقدمة مع مراعاة الشبكات وأمن البيانات، لإدارة الأنظمة الصغيرة والمتوسطة.";
+        document.getElementById('proj1Desc').innerText = "كتبت سكربتات وبرامج لأتمتة الشبكات، إدارة البيانات، والتحكم في الأجهزة المختلفة باستخدام تقنيات متنوعة.";
         document.getElementById('proj2Title').innerText = "تطوير البرامج";
-        document.getElementById('proj2Desc').innerText = "طورت برامج لتسهيل العمليات، أتمتة المهام، وإدارة البيانات بشكل آمن، بما يتوافق مع احتياجات الشركات والمشاريع.";
+        document.getElementById('proj2Desc').innerText = "صممت برامج لإدارة المهام والملفات وتسهيل العمليات الداخلية للشركات الصغيرة والمتوسطة، مع مراعاة الأمن والكفاءة.";
         document.getElementById('proj3Title').innerText = "تطوير الألعاب";
-        document.getElementById('proj3Desc').innerText = "طورت ألعاب 2D و3D للكمبيوتر والموبايل، مع دعم اللعب الجماعي والتواصل الشبكي، ودمج ميزات الذكاء الاصطناعي.";
+        document.getElementById('proj3Desc').innerText = "طورت ألعاب 2D و3D للكمبيوتر والموبايل، مع دعم اللعب الجماعي، وتطبيق بعض الميزات الذكية لتحسين تجربة المستخدم.";
         document.getElementById('projects').dir = 'rtl';
         lang = 'ar';
         document.getElementById('langBtn').innerText = 'English';
