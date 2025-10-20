@@ -117,10 +117,10 @@
 
 <section id="contact" data-aos="fade-up">
   <h2 id="contactTitle">📬 تواصل</h2>
-  <p><i class="fas fa-envelope"></i> <a href="mailto:Faisal.alsharari4@gmail.com">Faisal.alsharari4@gmail.com</a></p>
-  <p><i class="fas fa-phone"></i> +966554447552</p>
+  <p id="email"><i class="fas fa-envelope"></i> <a href="mailto:Faisal.alsharari4@gmail.com">Faisal.alsharari4@gmail.com</a></p>
+  <p id="phone"><i class="fas fa-phone"></i> +966554447552</p>
   <div class="social-icons">
-    <a href="https://www.snapchat.com/add/0105_f" target="_blank" title="Snapchat"><i class="fab fa-snapchat"></i></a>
+    <a href="https://www.snapchat.com/add/f_0105" target="_blank" title="Snapchat"><i class="fab fa-snapchat"></i></a>
     <a href="https://x.com/Faisal_CEng" target="_blank" title="X / Twitter"><i class="fab fa-x-twitter"></i></a>
     <a href="https://www.linkedin.com/in/faisal-alsharari-161556366/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
   </div>
@@ -153,54 +153,29 @@ const translations = {
     cert1Title:"Ethical Hacker", cert1Desc:"Jouf University via Cisco Networking Academy - May 2025",
     cert2Title:"CCNA: Introduction to Networks", cert2Desc:"Cisco Networking Academy - Dec 2023",
     contactTitle:"📬 Contact",
-    email:"Email: <a href='mailto:Faisal.alsharari4@gmail.com'>Faisal.alsharari4@gmail.com</a>",
-    phone:"Phone: +966554447552"
+    email:"<i class='fas fa-envelope'></i> <a href='mailto:Faisal.alsharari4@gmail.com'>Faisal.alsharari4@gmail.com</a>",
+    phone:"<i class='fas fa-phone'></i> +966554447552"
   }
 };
 
 function switchLang(){
+  const html = document.documentElement;
   if(lang==='ar'){
     const t=translations.en;
-    document.getElementById('name').innerHTML=t.name;
-    document.getElementById('role').innerHTML=t.role;
-    document.getElementById('btnCV').innerHTML=t.btnCV;
-    document.getElementById('btnProjects').innerHTML=t.btnProjects;
-    document.getElementById('btnAchievements').innerHTML=t.btnAchievements;
-    document.getElementById('btnCertificates').innerHTML=t.btnCertificates;
-    document.getElementById('btnContact').innerHTML=t.btnContact;
-    document.getElementById('cvTitle').innerHTML=t.cvTitle;
-    document.getElementById('cvEN').innerHTML=t.cvEN;
-    document.getElementById('cvAR').innerHTML=t.cvAR;
-    document.getElementById('projectsTitle').innerHTML=t.projectsTitle;
-    document.getElementById('proj1Title').innerHTML=t.proj1Title;
-    document.getElementById('proj1Desc').innerHTML=t.proj1Desc;
-    document.getElementById('proj2Title').innerHTML=t.proj2Title;
-    document.getElementById('proj2Desc').innerHTML=t.proj2Desc;
-    document.getElementById('proj3Title').innerHTML=t.proj3Title;
-    document.getElementById('proj3Desc').innerHTML=t.proj3Desc;
-    document.getElementById('proj4Title').innerHTML=t.proj4Title;
-    document.getElementById('proj4Desc').innerHTML=t.proj4Desc;
-    document.getElementById('achTitle').innerHTML=t.achTitle;
-    document.getElementById('ach1Title').innerHTML=t.ach1Title;
-    document.getElementById('ach1Desc').innerHTML=t.ach1Desc;
-    document.getElementById('ach2Title').innerHTML=t.ach2Title;
-    document.getElementById('ach2Desc').innerHTML=t.ach2Desc;
-    document.getElementById('ach3Title').innerHTML=t.ach3Title;
-    document.getElementById('ach3Desc').innerHTML=t.ach3Desc;
-    document.getElementById('certTitle').innerHTML=t.certTitle;
-    document.getElementById('cert1Title').innerHTML=t.cert1Title;
-    document.getElementById('cert1Desc').innerHTML=t.cert1Desc;
-    document.getElementById('cert2Title').innerHTML=t.cert2Title;
-    document.getElementById('cert2Desc').innerHTML=t.cert2Desc;
-    document.getElementById('contactTitle').innerHTML=t.contactTitle;
-    document.getElementById('email').innerHTML=t.email;
-    document.getElementById('phone').innerHTML=t.phone;
-    lang='en';
+    for(const key in t){
+      const el=document.getElementById(key);
+      if(el) el.innerHTML=t[key];
+    }
+    html.lang='en'; html.dir='ltr';
     document.getElementById('langBtn').innerHTML='العربية';
-  } else { location.reload(); }
+    lang='en';
+  } else {
+    html.lang='ar'; html.dir='rtl';
+    location.reload();
+  }
 }
 
-/* ---------------- Canvas Network ---------------- */
+/* ---------------- Canvas Background ---------------- */
 const canvas=document.getElementById("networkCanvas");
 const ctx=canvas.getContext("2d");
 canvas.width=window.innerWidth; canvas.height=window.innerHeight;
