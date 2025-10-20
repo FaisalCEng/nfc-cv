@@ -29,6 +29,7 @@
   .card img {width:100%;max-width:250px;border-radius:8px;margin-bottom:12px;}
   footer {text-align:center;padding:40px 20px;background:#0a0a0a;color:#66cfff;font-size:0.95em;}
   footer p {margin:5px 0;}
+  .social-icons {text-align:left;} /* تعديل: محتوى التواصل يسار */
   .social-icons a {color:#00e0ff;margin:0 10px;font-size:1.5em;transition:0.3s;}
   .social-icons a:hover {color:#00c8ff;}
   @media(max-width:600px){header h1{font-size:2.2em;}header p{font-size:1em;}.cards{gap:15px;}}
@@ -62,7 +63,7 @@
   <div class="cards">
     <div class="card">
       <h3 id="proj1Title">مشروع التخرج: نظام روبوت RFID</h3>
-      <p id="proj1Desc">نظام روبوت ذكي لتتبع المستخدمين وتقديم المساعدة باستخدام تقنية RFID، مع التحكم وإدارة البيانات بشكل ذكي وفعال.</p>
+      <p id="proj1Desc">نظام روبوت ذكي لتتبع المستخدمين وتقديم المساعدة باستخدام تقنية RFID، التطبيق العملي كان جزء رئيسي من تخرجي.</p>
     </div>
     <div class="card">
       <h3 id="proj2Title">مبرمج وشبكات</h3>
@@ -117,8 +118,8 @@
 
 <section id="contact" data-aos="fade-up">
   <h2 id="contactTitle">📬 تواصل</h2>
-  <p><i class="fas fa-envelope"></i> <a href="mailto:Faisal.alsharari4@gmail.com">Faisal.alsharari4@gmail.com</a></p>
-  <p><i class="fas fa-phone"></i> +966554447552</p>
+  <p id="email" style="text-align:left;"><i class="fas fa-envelope"></i> <a href="mailto:Faisal.alsharari4@gmail.com">Faisal.alsharari4@gmail.com</a></p>
+  <p id="phone" style="text-align:left;"><i class="fas fa-phone"></i> +966554447552</p>
   <div class="social-icons">
     <a href="https://www.snapchat.com/add/f_0105" target="_blank" title="Snapchat"><i class="fab fa-snapchat"></i></a>
     <a href="https://x.com/Faisal_CEng" target="_blank" title="X / Twitter"><i class="fab fa-x-twitter"></i></a>
@@ -134,100 +135,167 @@
 <script>
 AOS.init();
 
-let lang='ar';
-const translations={en:{
-  name:"Faisal Alsharari",
-  role:"Computer & Network Engineering • Software & Game Developer",
-  btnCV:"CV",btnProjects:"Projects",btnAchievements:"Achievements",btnCertificates:"Certificates",btnContact:"Contact",
-  cvTitle:"CV Files",cvEN:"English CV",cvAR:"Arabic CV",
-  projectsTitle:"Interests & Projects",
-  proj1Title:"Graduation Project: RFID Robot System", proj1Desc:"Smart robot system for tracking users and providing assistance using RFID technology. Core practical part of graduation.",
-  proj2Title:"Programming & Networking", proj2Desc:"Created scripts and software for automating networks, data management, and device control using various technologies.",
-  proj3Title:"Software Development", proj3Desc:"Designed software for task/file management and workflow optimization, considering security and efficiency.",
-  proj4Title:"Game Development", proj4Desc:"Developed 2D & 3D games for PC and mobile, with multiplayer support and smart features for better user experience.",
-  contactTitle:"📬 Contact", email:"Email: <a href='mailto:Faisal.alsharari4@gmail.com'>Faisal.alsharari4@gmail.com</a>", phone:"Phone: +966554447552"
-}};
+// ---- الترجمات ----
+let lang = 'ar';
+const translations = {
+  ar:{
+    name:'فيصل الشراري',
+    role:'هندسة الحاسب الآلي والشبكات • مطور برامج وألعاب',
+    btnCV:'السيرة الذاتية',
+    btnProjects:'اهتمامات ومشاريع',
+    btnAchievements:'الإنجازات',
+    btnCertificates:'الشهادات',
+    btnContact:'تواصل',
+    cvTitle:'📄 ملفات السيرة الذاتية',
+    cvAR:'السيرة بالعربية',
+    cvEN:'السيرة بالإنجليزية',
+    projectsTitle:'💻 اهتمامات ومشاريع',
+    proj1Title:'مشروع التخرج: نظام روبوت RFID',
+    proj1Desc:'نظام روبوت ذكي لتتبع المستخدمين وتقديم المساعدة باستخدام تقنية RFID، التطبيق العملي كان جزء رئيسي من تخرجي.',
+    proj2Title:'مبرمج وشبكات',
+    proj2Desc:'كتبت سكربتات وبرامج لأتمتة الشبكات، إدارة البيانات، والتحكم في الأجهزة المختلفة باستخدام تقنيات متنوعة.',
+    proj3Title:'تطوير البرامج',
+    proj3Desc:'صممت برامج لإدارة المهام والملفات وتسهيل العمليات الداخلية للشركات الصغيرة والمتوسطة، مع مراعاة الأمن والكفاءة.',
+    proj4Title:'تطوير الألعاب',
+    proj4Desc:'طورت ألعاب 2D و3D للكمبيوتر والموبايل، مع دعم اللعب الجماعي، وتطبيق بعض الميزات الذكية لتحسين تجربة المستخدم.',
+    achTitle:'🏆 الإنجازات',
+    ach1Title:'مشروع التخرج RFID',
+    ach1Desc:'نظام روبوت ذكي لتتبع المستخدمين وتقديم المساعدة باستخدام تقنية RFID، التطبيق العملي كان جزء رئيسي من تخرجي.',
+    ach2Title:'رواد الألعاب السعودية',
+    ach2Desc:'عرض تفاعلي للألعاب في فعالية CODE مع فريق سعودي مبتكر.',
+    ach3Title:'التطوع',
+    ach3Desc:'أكثر من 600 ساعة خدمة و8 سنوات مع جمعيات الكشافة في مكة.',
+    certTitle:'📜 الشهادات',
+    cert1Title:'هاكر أخلاقي',
+    cert1Desc:'جامعة الجوف عبر Cisco Networking Academy - مايو 2025',
+    cert2Title:'CCNA: مقدمة في الشبكات',
+    cert2Desc:'Cisco Networking Academy - ديسمبر 2023',
+    contactTitle:'📬 تواصل',
+    email:'<i class="fas fa-envelope"></i> <a href="mailto:Faisal.alsharari4@gmail.com">Faisal.alsharari4@gmail.com</a>',
+    phone:'+966554447552'
+  },
+  en:{
+    name:'Faisal AlSharari',
+    role:'Computer & Network Engineering • Software & Game Developer',
+    btnCV:'CV',
+    btnProjects:'Projects',
+    btnAchievements:'Achievements',
+    btnCertificates:'Certificates',
+    btnContact:'Contact',
+    cvTitle:'📄 CV Files',
+    cvAR:'Arabic CV',
+    cvEN:'English CV',
+    projectsTitle:'💻 Projects & Interests',
+    proj1Title:'Graduation Project: RFID Robot System',
+    proj1Desc:'Smart robot system to track users and provide assistance using RFID technology, practical application was a key part of my graduation.',
+    proj2Title:'Programming & Networking',
+    proj2Desc:'Developed scripts and programs to automate networks, manage data, and control devices using various technologies.',
+    proj3Title:'Software Development',
+    proj3Desc:'Designed software for task and file management to ease internal operations of SMEs, with security and efficiency in mind.',
+    proj4Title:'Game Development',
+    proj4Desc:'Developed 2D and 3D games for PC and mobile, including multiplayer support and smart features to enhance user experience.',
+    achTitle:'🏆 Achievements',
+    ach1Title:'Graduation Project: RFID',
+    ach1Desc:'Smart robot system to track users and provide assistance using RFID technology, practical application was a key part of my graduation.',
+    ach2Title:'Saudi Game Pioneers',
+    ach2Desc:'Interactive games showcase at CODE event with an innovative Saudi team.',
+    ach3Title:'Volunteering',
+    ach3Desc:'Over 600 service hours and 8 years with scouting associations in Makkah.',
+    certTitle:'📜 Certificates',
+    cert1Title:'Ethical Hacker',
+    cert1Desc:'Al-Jouf University via Cisco Networking Academy - May 2025',
+    cert2Title:'CCNA: Introduction to Networks',
+    cert2Desc:'Cisco Networking Academy - Dec 2023',
+    contactTitle:'📬 Contact',
+    email:'<i class="fas fa-envelope"></i> <a href="mailto:Faisal.alsharari4@gmail.com">Faisal.alsharari4@gmail.com</a>',
+    phone:'+966554447552'
+  }
+};
 
 function switchLang(){
-  if(lang==='ar'){
-    const t=translations.en;
-    document.getElementById('name').innerHTML=t.name;
-    document.getElementById('role').innerHTML=t.role;
-    document.getElementById('btnCV').innerHTML=t.btnCV;
-    document.getElementById('btnProjects').innerHTML=t.btnProjects;
-    document.getElementById('btnAchievements').innerHTML=t.btnAchievements;
-    document.getElementById('btnCertificates').innerHTML=t.btnCertificates;
-    document.getElementById('btnContact').innerHTML=t.btnContact;
-    document.getElementById('cvTitle').innerHTML=t.cvTitle;
-    document.getElementById('cvEN').innerHTML=t.cvEN;
-    document.getElementById('cvAR').innerHTML=t.cvAR;
-    document.getElementById('projectsTitle').innerHTML=t.projectsTitle;
-    document.getElementById('proj1Title').innerHTML=t.proj1Title;
-    document.getElementById('proj1Desc').innerHTML=t.proj1Desc;
-    document.getElementById('proj2Title').innerHTML=t.proj2Title;
-    document.getElementById('proj2Desc').innerHTML=t.proj2Desc;
-    document.getElementById('proj3Title').innerHTML=t.proj3Title;
-    document.getElementById('proj3Desc').innerHTML=t.proj3Desc;
-    document.getElementById('proj4Title').innerHTML=t.proj4Title;
-    document.getElementById('proj4Desc').innerHTML=t.proj4Desc;
-    document.getElementById('contactTitle').innerHTML=t.contactTitle;
-    lang='en';
-    document.getElementById('langBtn').innerHTML='العربية';
-  } else {
-    location.reload();
-  }
+  lang = (lang==='ar')?'en':'ar';
+  const t = translations[lang];
+  document.getElementById('name').innerHTML = t.name;
+  document.getElementById('role').innerHTML = t.role;
+  document.getElementById('btnCV').innerHTML = t.btnCV;
+  document.getElementById('btnProjects').innerHTML = t.btnProjects;
+  document.getElementById('btnAchievements').innerHTML = t.btnAchievements;
+  document.getElementById('btnCertificates').innerHTML = t.btnCertificates;
+  document.getElementById('btnContact').innerHTML = t.btnContact;
+  document.getElementById('cvTitle').innerHTML = t.cvTitle;
+  document.getElementById('cvAR').innerHTML = t.cvAR;
+  document.getElementById('cvEN').innerHTML = t.cvEN;
+  document.getElementById('projectsTitle').innerHTML = t.projectsTitle;
+  document.getElementById('proj1Title').innerHTML = t.proj1Title;
+  document.getElementById('proj1Desc').innerHTML = t.proj1Desc;
+  document.getElementById('proj2Title').innerHTML = t.proj2Title;
+  document.getElementById('proj2Desc').innerHTML = t.proj2Desc;
+  document.getElementById('proj3Title').innerHTML = t.proj3Title;
+  document.getElementById('proj3Desc').innerHTML = t.proj3Desc;
+  document.getElementById('proj4Title').innerHTML = t.proj4Title;
+  document.getElementById('proj4Desc').innerHTML = t.proj4Desc;
+  document.getElementById('achTitle').innerHTML = t.achTitle;
+  document.getElementById('ach1Title').innerHTML = t.ach1Title;
+  document.getElementById('ach1Desc').innerHTML = t.ach1Desc;
+  document.getElementById('ach2Title').innerHTML = t.ach2Title;
+  document.getElementById('ach2Desc').innerHTML = t.ach2Desc;
+  document.getElementById('ach3Title').innerHTML = t.ach3Title;
+  document.getElementById('ach3Desc').innerHTML = t.ach3Desc;
+  document.getElementById('certTitle').innerHTML = t.certTitle;
+  document.getElementById('cert1Title').innerHTML = t.cert1Title;
+  document.getElementById('cert1Desc').innerHTML = t.cert1Desc;
+  document.getElementById('cert2Title').innerHTML = t.cert2Title;
+  document.getElementById('cert2Desc').innerHTML = t.cert2Desc;
+  document.getElementById('contactTitle').innerHTML = t.contactTitle;
+  document.getElementById('email').innerHTML = t.email;
+  document.getElementById('phone').innerHTML = t.phone;
+  document.getElementById('langBtn').innerHTML = (lang==='ar')?'English':'العربية';
 }
 
-/* ---------------- Canvas Network with scroll effect ---------------- */
-const canvas=document.getElementById("networkCanvas");
-const ctx=canvas.getContext("2d");
-canvas.width=window.innerWidth; canvas.height=window.innerHeight;
-window.addEventListener("resize",()=>{canvas.width=window.innerWidth;canvas.height=window.innerHeight;});
+/* ---------------- Canvas متفاعل مع الماوس والتمرير ---------------- */
+const canvas = document.getElementById("networkCanvas");
+const ctx = canvas.getContext("2d");
+let nodes = [];
+let mouse = { x: null, y: null };
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-let nodes=[];
-for(let i=0;i<80;i++){
+for(let i=0;i<100;i++){
   nodes.push({
-    x:Math.random()*canvas.width,
-    y:Math.random()*canvas.height,
-    vx:(Math.random()-0.5)*0.5,
-    vy:(Math.random()-0.5)*0.5,
-    size: Math.random()*2+1
+    x: Math.random()*canvas.width,
+    y: Math.random()*canvas.height,
+    vx: (Math.random()-0.5)*0.6,
+    vy: (Math.random()-0.5)*0.6
   });
 }
 
-let scrollOffset=0;
-window.addEventListener('scroll',()=>{scrollOffset=window.scrollY/50;});
+window.addEventListener("mousemove", e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+window.addEventListener("resize", () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
+window.addEventListener("scroll", e => { nodes.forEach(n => { n.x += (Math.random()-0.5)*2; n.y += (Math.random()-0.5)*2; }); });
 
 function draw(){
   ctx.clearRect(0,0,canvas.width,canvas.height);
   nodes.forEach(n=>{
     ctx.beginPath();
-    ctx.arc(n.x + scrollOffset, n.y + scrollOffset, n.size,0,Math.PI*2);
+    ctx.arc(n.x,n.y,2,0,Math.PI*2);
     ctx.fillStyle="#00e0ff";
     ctx.fill();
-  });
-
-  for(let i=0;i<nodes.length;i++){
-    for(let j=i+1;j<nodes.length;j++){
-      let dx=nodes[i].x-nodes[j].x + scrollOffset;
-      let dy=nodes[i].y-nodes[j].y + scrollOffset;
-      let dist=Math.sqrt(dx*dx+dy*dy);
-      if(dist<120){
-        ctx.beginPath();
-        ctx.moveTo(nodes[i].x + scrollOffset, nodes[i].y + scrollOffset);
-        ctx.lineTo(nodes[j].x + scrollOffset, nodes[j].y + scrollOffset);
-        ctx.strokeStyle="rgba(0,224,255,0.2)";
-        ctx.stroke();
-      }
+    nodes.forEach(o=>{
+      let dx = n.x - o.x;
+      let dy = n.y - o.y;
+      let dist = Math.sqrt(dx*dx + dy*dy);
+      if(dist<120){ ctx.beginPath(); ctx.moveTo(n.x,n.y); ctx.lineTo(o.x,o.y); ctx.strokeStyle="rgba(0,224,255,0.2)"; ctx.stroke(); }
+    });
+    if(mouse.x && mouse.y){
+      let dx = n.x - mouse.x;
+      let dy = n.y - mouse.y;
+      let dist = Math.sqrt(dx*dx + dy*dy);
+      if(dist < 100){ ctx.beginPath(); ctx.moveTo(n.x,n.y); ctx.lineTo(mouse.x,mouse.y); ctx.strokeStyle="rgba(0,255,255,0.4)"; ctx.stroke(); }
     }
-  }
-
-  nodes.forEach(n=>{
-    n.x+=n.vx; n.y+=n.vy;
-    if(n.x<0||n.x>canvas.width)n.vx*=-1;
-    if(n.y<0||n.y>canvas.height)n.vy*=-1;
+    n.x += n.vx; n.y += n.vy;
+    if(n.x<0 || n.x>canvas.width) n.vx*=-1;
+    if(n.y<0 || n.y>canvas.height) n.vy*=-1;
   });
-
   requestAnimationFrame(draw);
 }
 draw();
