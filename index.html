@@ -6,103 +6,136 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <style>
+    /* ---------------- Body & Fonts ---------------- */
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
       background: #0a0a0a;
-      color: #e0e0e0;
+      color: #a0e0ff; /* أزرق فاتح للنصوص */
       overflow-x: hidden;
     }
+
     canvas {
       position: fixed;
       top: 0;
       left: 0;
       z-index: -1;
     }
+
+    /* ---------------- Header ---------------- */
     header {
       text-align: center;
       padding: 100px 20px;
     }
+
     header h1 {
       font-size: 3em;
-      color: #00c8ff;
-      text-shadow: 0 0 10px #00c8ff;
+      color: #00e0ff;
+      text-shadow: 0 0 15px #00e0ff;
     }
+
     header p {
       font-size: 1.2em;
-      color: #ccc;
+      color: #a0e0ff;
     }
+
     .lang-switch {
       position: fixed;
       top: 20px;
       right: 20px;
       z-index: 999;
     }
+
     .lang-switch button {
-      background: #00c8ff;
+      background: #00e0ff;
       color: #000;
       border: none;
       padding: 8px 16px;
       border-radius: 6px;
       cursor: pointer;
       font-weight: bold;
+      transition: 0.3s;
     }
-        section {
+
+    .lang-switch button:hover {
+      background: #00c8ff;
+    }
+
+    /* ---------------- Sections ---------------- */
+    section {
       padding: 80px 20px;
       max-width: 1000px;
       margin: auto;
     }
+
     h2 {
-      color: #00c8ff;
+      color: #00e0ff;
       margin-bottom: 20px;
-      text-shadow: 0 0 5px #00c8ff;
+      text-shadow: 0 0 8px #00e0ff;
+      text-align: center;
     }
+
     .btn {
       display: inline-block;
       margin: 10px;
       padding: 12px 20px;
-      background: #00c8ff;
+      background: #00e0ff;
       color: #000;
       text-decoration: none;
       border-radius: 8px;
       font-weight: bold;
+      transition: 0.3s;
     }
+
+    .btn:hover {
+      background: #00c8ff;
+    }
+
+    /* ---------------- Cards ---------------- */
     .cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
       margin-top: 30px;
     }
+
     .card {
-      background: #1a1a1a;
+      background: #101010;
       padding: 20px;
       border-radius: 10px;
-      box-shadow: 0 0 10px #000;
-      transition: transform 0.3s;
+      box-shadow: 0 0 15px #000;
+      transition: transform 0.3s, box-shadow 0.3s;
       text-align: center;
     }
+
     .card:hover {
       transform: scale(1.05);
+      box-shadow: 0 0 25px #00e0ff;
     }
+
     .card h3 {
-      color: #00ff88;
+      color: #00e0ff;
       margin-bottom: 10px;
     }
+
     .card p {
-      color: #ccc;
+      color: #a0e0ff;
       font-size: 0.95em;
     }
+
     .card img {
       width: 100%;
       max-width: 250px;
       border-radius: 8px;
       margin-bottom: 10px;
     }
+
+    /* ---------------- Footer ---------------- */
     footer {
       text-align: center;
       padding: 40px;
       background: #0a0a0a;
-      color: #777;
+      color: #66cfff;
       font-size: 0.9em;
     }
   </style>
@@ -122,6 +155,7 @@
     <a href="#certificates" class="btn">Certificates</a>
     <a href="#contact" class="btn">Contact</a>
   </header>
+
   <section id="cv" data-aos="fade-up">
     <h2>📄 CV Files</h2>
     <a href="CV EN.pdf" class="btn" target="_blank">English CV</a>
@@ -178,7 +212,8 @@
   <footer>
     &copy; 2025 Faisal Alsharari. All rights reserved.
   </footer>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init();
 
@@ -186,10 +221,16 @@
       window.location.href = "arabic.html";
     }
 
+    /* ---------------- Canvas Network ---------------- */
     const canvas = document.getElementById("networkCanvas");
     const ctx = canvas.getContext("2d");
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+
+    window.addEventListener("resize", () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
 
     let nodes = [];
     for (let i = 0; i < 80; i++) {
@@ -204,13 +245,12 @@
     function draw() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      for (let i = 0; i < nodes.length; i++) {
-        let n = nodes[i];
+      nodes.forEach(n => {
         ctx.beginPath();
         ctx.arc(n.x, n.y, 2, 0, Math.PI * 2);
-        ctx.fillStyle = "#00c8ff";
+        ctx.fillStyle = "#00e0ff";
         ctx.fill();
-      }
+      });
 
       for (let i = 0; i < nodes.length; i++) {
         for (let j = i + 1; j < nodes.length; j++) {
@@ -221,19 +261,19 @@
             ctx.beginPath();
             ctx.moveTo(nodes[i].x, nodes[i].y);
             ctx.lineTo(nodes[j].x, nodes[j].y);
-            ctx.strokeStyle = "rgba(0, 200, 255, 0.2)";
+            ctx.strokeStyle = "rgba(0, 224, 255, 0.2)";
             ctx.stroke();
           }
         }
       }
 
-      for (let i = 0; i < nodes.length; i++) {
-        nodes[i].x += nodes[i].vx;
-        nodes[i].y += nodes[i].vy;
+      nodes.forEach(n => {
+        n.x += n.vx;
+        n.y += n.vy;
 
-        if (nodes[i].x < 0 || nodes[i].x > canvas.width) nodes[i].vx *= -1;
-        if (nodes[i].y < 0 || nodes[i].y > canvas.height) nodes[i].vy *= -1;
-      }
+        if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
+        if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
+      });
 
       requestAnimationFrame(draw);
     }
