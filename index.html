@@ -9,27 +9,51 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: #0f0f0f;
+      background: #0d0d0d;
       color: #f0f0f0;
       scroll-behavior: smooth;
+    }
+    header {
+      text-align: center;
+      padding: 100px 20px;
+      background: radial-gradient(circle at top, #1a1a1a, #0d0d0d);
+    }
+    header h1 {
+      font-size: 3em;
+      color: #00ffe7;
+      animation: glow 2s infinite alternate;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #00ffe7; }
+      to { text-shadow: 0 0 20px #00ffe7; }
+    }
+    header p {
+      font-size: 1.2em;
+      color: #ccc;
+    }
+    .lang-switch {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 999;
+    }
+    .lang-switch button {
+      background: #00ffe7;
+      color: #000;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
     }
     section {
       padding: 80px 20px;
       max-width: 1000px;
       margin: auto;
     }
-    header {
-      text-align: center;
-      padding: 100px 20px;
-      background: linear-gradient(to right, #0f0f0f, #1a1a1a);
-    }
-    header h1 {
-      font-size: 3em;
-      color: #00ffe7;
-    }
-    header p {
-      font-size: 1.2em;
-      color: #ccc;
+    h2 {
+      color: #00ff88;
+      margin-bottom: 20px;
     }
     .btn {
       display: inline-block;
@@ -72,21 +96,6 @@
       color: #777;
       font-size: 0.9em;
     }
-    .lang-switch {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 999;
-    }
-    .lang-switch button {
-      background: #00ffe7;
-      color: #000;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-    }
   </style>
 </head>
 <body>
@@ -105,8 +114,8 @@
 
   <section id="cv" data-aos="fade-up">
     <h2>📄 Download My CV</h2>
-    <a href="CV EN.pdf" class="btn" target="_blank">English CV</a>
-    <a href="السيرة بالعربي.pdf" class="btn" target="_blank">Arabic CV</a>
+    <a href="https://drive.google.com/file/d/1M6_tuCmEwM43SwcPx07M8r-E1LonWCfb/view?usp=sharing" class="btn" target="_blank">English CV</a>
+    <a href="https://drive.google.com/file/d/11sjFm8LJoTUTYhhJH6tTCWXaV48qUOT-/view?usp=sharing" class="btn" target="_blank">Arabic CV</a>
   </section>
 
   <section id="achievements" data-aos="fade-up">
