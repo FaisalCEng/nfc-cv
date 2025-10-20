@@ -5,6 +5,7 @@
 <title>فيصل الشراري - مطور برامج وألعاب</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 <style>
   body {
     margin: 0;
@@ -94,6 +95,13 @@
     font-size: 0.95em;
   }
   footer p { margin: 5px 0; }
+  .social-icons a {
+    color: #00e0ff;
+    margin: 0 10px;
+    font-size: 1.5em;
+    transition: 0.3s;
+  }
+  .social-icons a:hover { color: #00c8ff; }
   @media (max-width: 600px) {
     header h1 { font-size: 2.2em; }
     header p { font-size: 1em; }
@@ -147,40 +155,36 @@
 </section>
 
 <section id="achievements" data-aos="fade-up">
-  <h2>🏆 الإنجازات</h2>
+  <h2 id="achTitle">🏆 الإنجازات</h2>
   <div class="cards">
     <div class="card">
-      <h3>مشروع التخرج RFID</h3>
-      <p>نظام روبوت ذكي لتتبع المستخدمين وتقديم المساعدة باستخدام تقنية RFID، التطبيق العملي كان جزء رئيسي من تخرجي.</p>
+      <h3 id="ach1Title">مشروع التخرج RFID</h3>
+      <p id="ach1Desc">نظام روبوت ذكي لتتبع المستخدمين وتقديم المساعدة باستخدام تقنية RFID، التطبيق العملي كان جزء رئيسي من تخرجي.</p>
     </div>
     <div class="card">
-      <h3>رواد الألعاب السعودية</h3>
-      <p>عرض تفاعلي للألعاب في فعالية CODE مع فريق سعودي مبتكر.</p>
+      <h3 id="ach2Title">رواد الألعاب السعودية</h3>
+      <p id="ach2Desc">عرض تفاعلي للألعاب في فعالية CODE مع فريق سعودي مبتكر.</p>
     </div>
     <div class="card">
-      <h3>التطوع</h3>
-      <p>أكثر من 600 ساعة خدمة و8 سنوات مع جمعيات الكشافة في مكة.</p>
-    </div>
-    <div class="card">
-      <h3>هاكاثونات ومسابقات</h3>
-      <p>المشاركة في مسابقات تطوير برمجيات وألعاب وحصول على جوائز ابتكار.</p>
+      <h3 id="ach3Title">التطوع</h3>
+      <p id="ach3Desc">أكثر من 600 ساعة خدمة و8 سنوات مع جمعيات الكشافة في مكة.</p>
     </div>
   </div>
 </section>
 
 <section id="certificates" data-aos="fade-up">
-  <h2>📜 الشهادات</h2>
+  <h2 id="certTitle">📜 الشهادات</h2>
   <div class="cards">
     <div class="card">
       <img src="ethical-hacker.png" alt="شهادة الهاكر الأخلاقي" />
-      <h3>هاكر أخلاقي</h3>
-      <p>جامعة الجوف عبر Cisco Networking Academy - مايو 2025</p>
+      <h3 id="cert1Title">هاكر أخلاقي</h3>
+      <p id="cert1Desc">جامعة الجوف عبر Cisco Networking Academy - مايو 2025</p>
       <a href="certificate_faisal-alsharari4-gmail-com_e63ef6a7-64c8-4f5a-9d5e-94891303e53d.pdf" class="btn" target="_blank">عرض PDF</a>
     </div>
     <div class="card">
       <img src="ccna-intro.png" alt="شهادة CCNA" />
-      <h3>CCNA: مقدمة في الشبكات</h3>
-      <p>Cisco Networking Academy - ديسمبر 2023</p>
+      <h3 id="cert2Title">CCNA: مقدمة في الشبكات</h3>
+      <p id="cert2Desc">Cisco Networking Academy - ديسمبر 2023</p>
       <a href="CCNA-_Introduction_to_Networks_certificate_faisal-alsharari4-gmail-com_0786a78a-d680-420c-80cd-bf2195c5207d.pdf" class="btn" target="_blank">عرض PDF</a>
     </div>
   </div>
@@ -188,10 +192,12 @@
 
 <section id="contact" data-aos="fade-up">
   <h2 id="contactTitle">📬 تواصل</h2>
-  <p>البريد الإلكتروني: <a href="mailto:Faisal.alsharari4@gmail.com">Faisal.alsharari4@gmail.com</a></p>
-  <p>رقم الجوال: +966554447552</p>
-  <p>سناب شات: 0105_f</p>
-  <p>X (تويتر سابقًا): @Faisal_CEng</p>
+  <p id="email">البريد الإلكتروني: <a href="mailto:Faisal.alsharari4@gmail.com">Faisal.alsharari4@gmail.com</a></p>
+  <p id="phone">رقم الجوال: +966554447552</p>
+  <div class="social-icons">
+    <a href="https://www.snapchat.com/add/0105_f" target="_blank"><i class="fab fa-snapchat"></i></a>
+    <a href="https://x.com/Faisal_CEng" target="_blank"><i class="fab fa-x-twitter"></i></a>
+  </div>
 </section>
 
 <footer>
@@ -223,36 +229,70 @@ const translations = {
     proj3Title: "Software Development",
     proj3Desc: "Designed software for task/file management and workflow optimization, considering security and efficiency.",
     proj4Title: "Game Development",
-    proj4Desc: "Developed 2D & 3D games for PC and mobile, with multiplayer support and smart features for better user experience."
+    proj4Desc: "Developed 2D & 3D games for PC and mobile, with multiplayer support and smart features for better user experience.",
+    achTitle: "🏆 Achievements",
+    ach1Title: "Graduation Project: RFID",
+    ach1Desc: "Smart robot system for tracking users and providing assistance using RFID technology. Core practical part of graduation.",
+    ach2Title: "Saudi Game Pioneers",
+    ach2Desc: "Interactive game at CODE event with innovative Saudi team.",
+    ach3Title: "Volunteering",
+    ach3Desc: "Over 600 hours of service and 8 years with Scout Associations in Makkah.",
+    certTitle: "📜 Certificates",
+    cert1Title: "Ethical Hacker",
+    cert1Desc: "Jouf University via Cisco Networking Academy - May 2025",
+    cert2Title: "CCNA: Introduction to Networks",
+    cert2Desc: "Cisco Networking Academy - Dec 2023",
+    contactTitle: "📬 Contact",
+    email: "Email: <a href='mailto:Faisal.alsharari4@gmail.com'>Faisal.alsharari4@gmail.com</a>",
+    phone: "Phone: +966554447552"
   }
 };
 
 function switchLang() {
   if(lang === 'ar'){
     const t = translations.en;
-    document.getElementById('name').innerText = t.name;
-    document.getElementById('role').innerText = t.role;
-    document.getElementById('btnCV').innerText = t.btnCV;
-    document.getElementById('btnProjects').innerText = t.btnProjects;
-    document.getElementById('btnAchievements').innerText = t.btnAchievements;
-    document.getElementById('btnCertificates').innerText = t.btnCertificates;
-    document.getElementById('btnContact').innerText = t.btnContact;
-    document.getElementById('cvTitle').innerText = t.cvTitle;
-    document.getElementById('cvEN').innerText = t.cvEN;
-    document.getElementById('cvAR').innerText = t.cvAR;
-    document.getElementById('projectsTitle').innerText = t.projectsTitle;
-    document.getElementById('proj1Title').innerText = t.proj1Title;
-    document.getElementById('proj1Desc').innerText = t.proj1Desc;
-    document.getElementById('proj2Title').innerText = t.proj2Title;
-    document.getElementById('proj2Desc').innerText = t.proj2Desc;
-    document.getElementById('proj3Title').innerText = t.proj3Title;
-    document.getElementById('proj3Desc').innerText = t.proj3Desc;
-    document.getElementById('proj4Title').innerText = t.proj4Title;
-    document.getElementById('proj4Desc').innerText = t.proj4Desc;
+    document.getElementById('name').innerHTML = t.name;
+    document.getElementById('role').innerHTML = t.role;
+    document.getElementById('btnCV').innerHTML = t.btnCV;
+    document.getElementById('btnProjects').innerHTML = t.btnProjects;
+    document.getElementById('btnAchievements').innerHTML = t.btnAchievements;
+    document.getElementById('btnCertificates').innerHTML = t.btnCertificates;
+    document.getElementById('btnContact').innerHTML = t.btnContact;
+    document.getElementById('cvTitle').innerHTML = t.cvTitle;
+    document.getElementById('cvEN').innerHTML = t.cvEN;
+    document.getElementById('cvAR').innerHTML = t.cvAR;
+    document.getElementById('projectsTitle').innerHTML = t.projectsTitle;
+    document.getElementById('proj1Title').innerHTML = t.proj1Title;
+    document.getElementById('proj1Desc').innerHTML = t.proj1Desc;
+    document.getElementById('proj2Title').innerHTML = t.proj2Title;
+    document.getElementById('proj2Desc').innerHTML = t.proj2Desc;
+    document.getElementById('proj3Title').innerHTML = t.proj3Title;
+    document.getElementById('proj3Desc').innerHTML = t.proj3Desc;
+    document.getElementById('proj4Title').innerHTML = t.proj4Title;
+    document.getElementById('proj4Desc').innerHTML = t.proj4Desc;
+
+    document.getElementById('achTitle').innerHTML = t.achTitle;
+    document.getElementById('ach1Title').innerHTML = t.ach1Title;
+    document.getElementById('ach1Desc').innerHTML = t.ach1Desc;
+    document.getElementById('ach2Title').innerHTML = t.ach2Title;
+    document.getElementById('ach2Desc').innerHTML = t.ach2Desc;
+    document.getElementById('ach3Title').innerHTML = t.ach3Title;
+    document.getElementById('ach3Desc').innerHTML = t.ach3Desc;
+
+    document.getElementById('certTitle').innerHTML = t.certTitle;
+    document.getElementById('cert1Title').innerHTML = t.cert1Title;
+    document.getElementById('cert1Desc').innerHTML = t.cert1Desc;
+    document.getElementById('cert2Title').innerHTML = t.cert2Title;
+    document.getElementById('cert2Desc').innerHTML = t.cert2Desc;
+
+    document.getElementById('contactTitle').innerHTML = t.contactTitle;
+    document.getElementById('email').innerHTML = t.email;
+    document.getElementById('phone').innerHTML = t.phone;
+
     lang='en';
-    document.getElementById('langBtn').innerText = 'العربية';
+    document.getElementById('langBtn').innerHTML = 'العربية';
   } else {
-    location.reload(); // لإعادة النسخة العربية مع الحفاظ على الإنجازات والشهادات
+    location.reload();
   }
 }
 
