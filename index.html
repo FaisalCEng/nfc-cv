@@ -2,201 +2,302 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
+  <title>فيصل الشراري - هندسة الحاسب الآلي و الشبكات</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>فيصل الشراري | مهندس ومطور</title>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     body {
-      font-family: "Tajawal", sans-serif;
-      background: linear-gradient(to bottom right, #e3f2fd, #bbdefb);
-      color: #0d47a1;
       margin: 0;
-      padding: 0;
-      text-align: center;
-      direction: rtl;
-      transition: all 0.3s ease;
+      font-family: 'Segoe UI', sans-serif;
+      background: #0a0a0a;
+      color: #e0e0e0;
+      overflow-x: hidden;
+    }
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
     }
     header {
-      background: rgba(13, 71, 161, 0.9);
-      color: white;
-      padding: 20px 0;
+      text-align: center;
+      padding: 100px 20px;
     }
     header h1 {
-      margin: 0;
-      font-size: 2em;
+      font-size: 3em;
+      color: #00c8ff;
+      text-shadow: 0 0 10px #00c8ff;
     }
-    nav {
-      margin-top: 10px;
+    header p {
+      font-size: 1.2em;
+      color: #ccc;
     }
-    nav button {
-      margin: 5px;
-      padding: 10px 20px;
+    .lang-switch {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 999;
+    }
+    .lang-switch button {
+      background: #00c8ff;
+      color: #000;
       border: none;
-      border-radius: 8px;
-      background-color: #64b5f6;
-      color: white;
+      padding: 8px 16px;
+      border-radius: 6px;
       cursor: pointer;
-      font-size: 1em;
-      transition: 0.3s;
-    }
-    nav button:hover {
-      background-color: #2196f3;
+      font-weight: bold;
     }
     section {
-      margin: 40px auto;
-      max-width: 800px;
-      padding: 20px;
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 80px 20px;
+      max-width: 1000px;
+      margin: auto;
     }
     h2 {
-      color: #0d47a1;
+      color: #00c8ff;
+      margin-bottom: 20px;
+      text-shadow: 0 0 5px #00c8ff;
     }
-    a {
-      color: #0d47a1;
+    .btn {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 20px;
+      background: #00c8ff;
+      color: #000;
       text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
+      border-radius: 8px;
+      font-weight: bold;
     }
     .cv-buttons {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 10px;
-      margin-top: 20px;
+      gap: 15px;
     }
-    .cv-buttons a {
-      display: inline-block;
-      padding: 12px 25px;
-      background-color: #42a5f5;
-      color: white;
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .card {
+      background: #1a1a1a;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #000;
+      transition: transform 0.3s;
+      text-align: center;
+    }
+    .card:hover {
+      transform: scale(1.05);
+    }
+    .card h3 {
+      color: #00ff88;
+      margin-bottom: 10px;
+    }
+    .card p {
+      color: #ccc;
+      font-size: 0.95em;
+    }
+    .card img {
+      width: 100%;
+      max-width: 250px;
       border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-      width: 200px;
-    }
-    .cv-buttons a:hover {
-      background-color: #1e88e5;
+      margin-bottom: 10px;
     }
     .social-icons {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      font-size: 1.8em;
-      margin-top: 15px;
+      margin-top: 20px;
     }
     .social-icons a {
-      color: #0d47a1;
-      transition: 0.3s;
+      color: #00c8ff;
+      font-size: 1.5em;
+      margin: 0 10px;
+      text-decoration: none;
     }
-    .social-icons a:hover {
-      color: #1976d2;
+    footer {
+      text-align: center;
+      padding: 40px;
+      background: #0a0a0a;
+      color: #777;
+      font-size: 0.9em;
     }
   </style>
 </head>
 <body>
-  <header>
+  <canvas id="networkCanvas"></canvas>
+
+  <div class="lang-switch">
+    <button id="langBtn" onclick="switchLang()">English</button>
+  </div>
+
+  <header data-aos="fade-down">
     <h1 id="name">فيصل الشراري</h1>
-    <p id="title">مهندس حاسب آلي وشبكات | مطور برامج وألعاب</p>
-    <nav>
-      <button onclick="changeLang('ar')">🇸🇦 العربية</button>
-      <button onclick="changeLang('en')">🇬🇧 English</button>
-    </nav>
+    <p id="role">مهندس حاسب آلي وشبكات • مطور برمجيات وألعاب</p>
+    <a href="#cv" class="btn" id="btnCV">السيرة الذاتية</a>
+    <a href="#achievements" class="btn" id="btnAchievements">الإنجازات</a>
+    <a href="#certificates" class="btn" id="btnCertificates">الشهادات</a>
+    <a href="#contact" class="btn" id="btnContact">تواصل</a>
   </header>
 
-  <section id="about">
-    <h2 id="aboutTitle">نبذة</h2>
-    <p id="aboutText">
-      مهندس حاسب آلي وشبكات، أمتلك شغفاً بتطوير البرمجيات والألعاب. أعمل على ابتكار حلول تقنية تجمع بين الكفاءة والإبداع، وأسعى دائماً لتعلم تقنيات جديدة في مجالات البرمجة والشبكات.
-    </p>
-  </section>
-
-  <section id="skills">
-    <h2 id="skillsTitle">الاهتمامات والمهارات</h2>
-    <ul id="skillsList" style="list-style:none; padding:0;">
-      <li>🖥️ هندسة الحاسب الآلي والشبكات</li>
-      <li>💻 تطوير البرمجيات والتطبيقات</li>
-      <li>🎮 تطوير الألعاب</li>
-      <li>☁️ إدارة الأنظمة والخوادم</li>
-    </ul>
-  </section>
-
-  <section id="achievements">
-    <h2 id="achievementsTitle">الإنجازات والمشاريع</h2>
-    <ul id="achievementsList" style="list-style:none; padding:0;">
-      <li>📡 مشروع التخرج: نظام تتبع باستخدام تقنية RFID لزيادة الكفاءة والأمان.</li>
-      <li>💡 تطوير عدد من التطبيقات الشخصية لتبسيط المهام اليومية.</li>
-      <li>🎯 المساهمة في مشاريع مفتوحة المصدر.</li>
-    </ul>
-  </section>
-
-  <section id="certificates">
-    <h2 id="certificatesTitle">الشهادات</h2>
-    <ul id="certificatesList" style="list-style:none; padding:0;">
-      <li>🎓 درجة البكالوريوس في هندسة الحاسب الآلي والشبكات</li>
-      <li>📜 شهادات تدريبية في تطوير البرمجيات والشبكات</li>
-    </ul>
-  </section>
-
-  <section id="cv">
-    <h2 id="cvTitle">السيرة الذاتية</h2>
+  <section id="cv" data-aos="fade-up">
+    <h2 id="cvTitle">📄 السيرة الذاتية</h2>
     <div class="cv-buttons">
-      <a href="https://drive.google.com/file/d/11sjFm8LJoTUTYhhJH6tTCWXaV48qUOT-/view?usp=sharing" target="_blank">📄 السيرة الذاتية (عربي)</a>
-      <a href="https://drive.google.com/file/d/1M6_tuCmEwM43SwcPx07M8r-E1LonWCfb/view?usp=sharing" target="_blank">📄 السيرة الذاتية (English)</a>
+      <a href="https://drive.google.com/file/d/11sjFm8LJoTUTYhhJH6tTCWXaV48qUOT-/view?usp=sharing" class="btn" target="_blank" id="arabicCV">السيرة بالعربية</a>
+      <a href="https://drive.google.com/file/d/1M6_tuCmEwM43SwcPx07M8r-E1LonWCfb/view?usp=sharing" class="btn" target="_blank" id="englishCV">CV بالإنجليزية</a>
     </div>
   </section>
 
-  <section id="contact">
+  <section id="achievements" data-aos="fade-up">
+    <h2 id="achievementsTitle">🏆 الإنجازات</h2>
+    <div class="cards" id="achievementsContent"></div>
+  </section>
+
+  <section id="certificates" data-aos="fade-up">
+    <h2 id="certificatesTitle">📜 الشهادات</h2>
+    <div class="cards" id="certificatesContent"></div>
+  </section>
+
+  <section id="contact" data-aos="fade-up">
     <h2 id="contactTitle">📬 تواصل</h2>
     <p><i class="fas fa-envelope"></i> <a href="mailto:Faisal.alsharari4@gmail.com">Faisal.alsharari4@gmail.com</a></p>
     <p><i class="fas fa-phone"></i> +966554447552</p>
     <div class="social-icons">
       <a href="https://www.snapchat.com/add/f_0105" target="_blank" title="Snapchat"><i class="fab fa-snapchat"></i></a>
-      <a href="https://x.com/Faisal_CEng" target="_blank" title="X / Twitter"><i class="fab fa-x-twitter"></i></a>
+      <a href="https://x.com/Faisal_CEng" target="_blank" title="X"><i class="fab fa-x-twitter"></i></a>
       <a href="https://www.linkedin.com/in/faisal-alsharari-161556366/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
     </div>
   </section>
 
+  <footer>&copy; 2025 فيصل الشراري. جميع الحقوق محفوظة.</footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    const content = {
-      ar: {
-        dir: "rtl",
-        name: "فيصل الشراري",
-        title: "مهندس حاسب آلي وشبكات | مطور برامج وألعاب",
-        aboutTitle: "نبذة",
-        aboutText: "مهندس حاسب آلي وشبكات، أمتلك شغفاً بتطوير البرمجيات والألعاب...",
-        skillsTitle: "الاهتمامات والمهارات",
-        achievementsTitle: "الإنجازات والمشاريع",
-        certificatesTitle: "الشهادات",
-        cvTitle: "السيرة الذاتية",
-        contactTitle: "📬 تواصل",
-      },
-      en: {
-        dir: "ltr",
-        name: "Faisal Alsharari",
-        title: "Computer & Network Engineer | Software and Game Developer",
-        aboutTitle: "About Me",
-        aboutText: "Computer and network engineer passionate about software and game development...",
-        skillsTitle: "Interests & Skills",
-        achievementsTitle: "Achievements & Projects",
-        certificatesTitle: "Certificates",
-        cvTitle: "Curriculum Vitae",
-        contactTitle: "📬 Contact",
-      }
+    AOS.init();
+
+    const achievements = {
+      ar: [
+        { title: "مشروع التخرج - نظام روبوت بتقنية RFID", desc: "روبوت ذكي يعتمد على تقنية RFID للتتبع والمساعدة الذكية في البيئات الجامعية." },
+        { title: "مشروع لعبة متعددة اللاعبين", desc: "تصميم وتطوير لعبة تفاعلية بمزامنة دقيقة وتجربة مستخدم جذابة." },
+        { title: "تطويع وخدمة المجتمع", desc: "أكثر من 600 ساعة تطوعية وخبرة تمتد لـ8 سنوات في الجمعيات الكشفية بمكة." }
+      ],
+      en: [
+        { title: "Graduation Project - RFID Robot System", desc: "A smart robot system using RFID technology for tracking and assistance in university environments." },
+        { title: "Multiplayer Game Project", desc: "Designed and developed an interactive game with real-time synchronization and immersive experience." },
+        { title: "Volunteering", desc: "Over 600 hours of volunteering and 8 years with Scout Associations in Makkah." }
+      ]
     };
 
-    function changeLang(lang) {
-      document.documentElement.lang = lang;
-      document.body.dir = content[lang].dir;
-      for (const id in content[lang]) {
-        if (document.getElementById(id)) {
-          document.getElementById(id).textContent = content[lang][id];
-        }
+    const certificates = {
+      ar: [
+        { title: "Ethical Hacker", desc: "جامعة الجوف عبر أكاديمية سيسكو - مايو 2025" },
+        { title: "CCNA: مقدمة في الشبكات", desc: "أكاديمية سيسكو - ديسمبر 2023" }
+      ],
+      en: [
+        { title: "Ethical Hacker", desc: "Jouf University via Cisco Networking Academy - May 2025" },
+        { title: "CCNA: Introduction to Networks", desc: "Cisco Networking Academy - Dec 2023" }
+      ]
+    };
+
+    function renderContent(lang) {
+      const achSection = document.getElementById("achievementsContent");
+      const certSection = document.getElementById("certificatesContent");
+      achSection.innerHTML = "";
+      certSection.innerHTML = "";
+
+      achievements[lang].forEach(a => {
+        achSection.innerHTML += `<div class='card'><h3>${a.title}</h3><p>${a.desc}</p></div>`;
+      });
+      certificates[lang].forEach(c => {
+        certSection.innerHTML += `<div class='card'><h3>${c.title}</h3><p>${c.desc}</p></div>`;
+      });
+    }
+
+    let currentLang = "ar";
+    renderContent("ar");
+
+    function switchLang() {
+      const html = document.documentElement;
+      if (currentLang === "ar") {
+        currentLang = "en";
+        html.lang = "en";
+        html.dir = "ltr";
+        document.getElementById("langBtn").innerText = "العربية";
+        document.getElementById("name").innerText = "Faisal Alsharari";
+        document.getElementById("role").innerText = "Computer & Network Engineer • Software and Game Developer";
+        document.getElementById("btnCV").innerText = "CV";
+        document.getElementById("btnAchievements").innerText = "Achievements";
+        document.getElementById("btnCertificates").innerText = "Certificates";
+        document.getElementById("btnContact").innerText = "Contact";
+        document.getElementById("cvTitle").innerText = "📄 CV";
+        document.getElementById("achievementsTitle").innerText = "🏆 Achievements";
+        document.getElementById("certificatesTitle").innerText = "📜 Certificates";
+        document.getElementById("contactTitle").innerText = "📬 Contact";
+        renderContent("en");
+      } else {
+        currentLang = "ar";
+        html.lang = "ar";
+        html.dir = "rtl";
+        document.getElementById("langBtn").innerText = "English";
+        document.getElementById("name").innerText = "فيصل الشراري";
+        document.getElementById("role").innerText = "مهندس حاسب آلي وشبكات • مطور برمجيات وألعاب";
+        document.getElementById("btnCV").innerText = "السيرة الذاتية";
+        document.getElementById("btnAchievements").innerText = "الإنجازات";
+        document.getElementById("btnCertificates").innerText = "الشهادات";
+        document.getElementById("btnContact").innerText = "تواصل";
+        document.getElementById("cvTitle").innerText = "📄 السيرة الذاتية";
+        document.getElementById("achievementsTitle").innerText = "🏆 الإنجازات";
+        document.getElementById("certificatesTitle").innerText = "📜 الشهادات";
+        document.getElementById("contactTitle").innerText = "📬 تواصل";
+        renderContent("ar");
       }
     }
+
+    // الخلفية
+    const canvas = document.getElementById("networkCanvas");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    let nodes = [];
+    for (let i = 0; i < 80; i++) {
+      nodes.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5
+      });
+    }
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = 0; i < nodes.length; i++) {
+        let n = nodes[i];
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, 2, 0, Math.PI * 2);
+        ctx.fillStyle = "#00c8ff";
+        ctx.fill();
+      }
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          let dx = nodes[i].x - nodes[j].x;
+          let dy = nodes[i].y - nodes[j].y;
+          let dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 120) {
+            ctx.beginPath();
+            ctx.moveTo(nodes[i].x, nodes[i].y);
+            ctx.lineTo(nodes[j].x, nodes[j].y);
+            ctx.strokeStyle = "rgba(0, 200, 255, 0.2)";
+            ctx.stroke();
+          }
+        }
+      }
+      for (let i = 0; i < nodes.length; i++) {
+        nodes[i].x += nodes[i].vx;
+        nodes[i].y += nodes[i].vy;
+        if (nodes[i].x < 0 || nodes[i].x > canvas.width) nodes[i].vx *= -1;
+        if (nodes[i].y < 0 || nodes[i].y > canvas.height) nodes[i].vy *= -1;
+      }
+      requestAnimationFrame(draw);
+    }
+    draw();
   </script>
 </body>
 </html>
