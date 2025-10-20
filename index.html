@@ -6,12 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <style>
-    /* ---------------- Body & Fonts ---------------- */
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
       background: #0a0a0a;
-      color: #a0e0ff; /* أزرق فاتح للنصوص */
+      color: #a0e0ff;
       overflow-x: hidden;
     }
 
@@ -22,7 +21,6 @@
       z-index: -1;
     }
 
-    /* ---------------- Header ---------------- */
     header {
       text-align: center;
       padding: 100px 20px;
@@ -62,7 +60,6 @@
       background: #00c8ff;
     }
 
-    /* ---------------- Sections ---------------- */
     section {
       padding: 80px 20px;
       max-width: 1000px;
@@ -92,7 +89,6 @@
       background: #00c8ff;
     }
 
-    /* ---------------- Cards ---------------- */
     .cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -133,7 +129,6 @@
       margin-bottom: 12px;
     }
 
-    /* ---------------- Footer ---------------- */
     footer {
       text-align: center;
       padding: 40px;
@@ -147,49 +142,51 @@
   <canvas id="networkCanvas"></canvas>
 
   <div class="lang-switch">
-    <button onclick="switchLang()">العربية</button>
+    <button onclick="switchLang()">
+      <span id="langBtn">العربية</span>
+    </button>
   </div>
 
   <header data-aos="fade-down">
-    <h1>Faisal Alsharari</h1>
-    <p>Game & Software Developer • Innovative Tools & Applications</p>
-    <a href="#cv" class="btn">CV</a>
-    <a href="#projects" class="btn">Projects</a>
-    <a href="#achievements" class="btn">Achievements</a>
-    <a href="#certificates" class="btn">Certificates</a>
-    <a href="#contact" class="btn">Contact</a>
+    <h1 id="name">Faisal Alsharari</h1>
+    <p id="role">Computer & Network Engineer • Game & Software Developer</p>
+    <a href="#cv" class="btn" id="btnCV">CV</a>
+    <a href="#projects" class="btn" id="btnProjects">Projects</a>
+    <a href="#achievements" class="btn" id="btnAchievements">Achievements</a>
+    <a href="#certificates" class="btn" id="btnCertificates">Certificates</a>
+    <a href="#contact" class="btn" id="btnContact">Contact</a>
   </header>
 
   <section id="cv" data-aos="fade-up">
-    <h2>📄 CV Files</h2>
-    <a href="CV EN.pdf" class="btn" target="_blank">English CV</a>
-    <a href="السيرة بالعربي.pdf" class="btn" target="_blank">Arabic CV</a>
+    <h2 id="cvTitle">📄 CV Files</h2>
+    <a href="CV EN.pdf" class="btn" target="_blank" id="cvEN">English CV</a>
+    <a href="السيرة بالعربي.pdf" class="btn" target="_blank" id="cvAR">Arabic CV</a>
   </section>
 
   <section id="projects" data-aos="fade-up">
-    <h2>💻 Projects & Software</h2>
+    <h2 id="projectsTitle">💻 Projects & Software</h2>
     <div class="cards">
       <div class="card">
-        <h3>Game Engine Tools</h3>
-        <p>Created utilities for asset management, level design, and testing workflows for game projects.</p>
+        <h3 id="proj1Title">Game Development Tools</h3>
+        <p id="proj1Desc">Designed and implemented utilities for game development pipelines, asset management, and level design, integrating networking features where needed.</p>
       </div>
       <div class="card">
-        <h3>Cross-Platform Games</h3>
-        <p>Developed 2D & 3D games for PC and mobile platforms with optimized performance and multiplayer support.</p>
+        <h3 id="proj2Title">Cross-Platform Games</h3>
+        <p id="proj2Desc">Developed 2D & 3D games for PC and mobile platforms, incorporating online multiplayer and secure network communications.</p>
       </div>
       <div class="card">
-        <h3>Smart Automation Software</h3>
-        <p>Programs for automating repetitive tasks, data management, and analysis for small businesses.</p>
+        <h3 id="proj3Title">Automation & Networking Software</h3>
+        <p id="proj3Desc">Created software solutions for automating tasks, network monitoring, and secure data management for small businesses and projects.</p>
       </div>
       <div class="card">
-        <h3>Experimental AI Tools</h3>
-        <p>Integration of AI-based features in games, including NPC behavior and decision-making logic.</p>
+        <h3 id="proj4Title">Experimental AI Features</h3>
+        <p id="proj4Desc">Implemented AI-driven behaviors in games and applications, with networking considerations for multiplayer environments.</p>
       </div>
     </div>
   </section>
 
   <section id="achievements" data-aos="fade-up">
-    <h2>🏆 Achievements</h2>
+    <h2 id="achievementsTitle">🏆 Achievements</h2>
     <div class="cards">
       <div class="card">
         <h3>Saudi Game Pioneers</h3>
@@ -211,7 +208,7 @@
   </section>
 
   <section id="certificates" data-aos="fade-up">
-    <h2>📜 Certificates</h2>
+    <h2 id="certificatesTitle">📜 Certificates</h2>
     <div class="cards">
       <div class="card">
         <img src="ethical-hacker.png" alt="Ethical Hacker Certificate" />
@@ -229,7 +226,7 @@
   </section>
 
   <section id="contact" data-aos="fade-up">
-    <h2>📬 Contact</h2>
+    <h2 id="contactTitle">📬 Contact</h2>
     <p>Email: <a href="mailto:Faisal.alsharari4@gmail.com">Faisal.alsharari4@gmail.com</a></p>
     <p>Phone: +966-55-444-7552</p>
     <p>Location: Al Qurayyat, Al Jawf, Saudi Arabia</p>
@@ -243,68 +240,16 @@
   <script>
     AOS.init();
 
-    function switchLang() {
-      window.location.href = "arabic.html";
-    }
-
-    /* ---------------- Canvas Network ---------------- */
-    const canvas = document.getElementById("networkCanvas");
-    const ctx = canvas.getContext("2d");
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    window.addEventListener("resize", () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    });
-
-    let nodes = [];
-    for (let i = 0; i < 80; i++) {
-      nodes.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5
-      });
-    }
-
-    function draw() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      nodes.forEach(n => {
-        ctx.beginPath();
-        ctx.arc(n.x, n.y, 2, 0, Math.PI * 2);
-        ctx.fillStyle = "#00e0ff";
-        ctx.fill();
-      });
-
-      for (let i = 0; i < nodes.length; i++) {
-        for (let j = i + 1; j < nodes.length; j++) {
-          let dx = nodes[i].x - nodes[j].x;
-          let dy = nodes[i].y - nodes[j].y;
-          let dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 120) {
-            ctx.beginPath();
-            ctx.moveTo(nodes[i].x, nodes[i].y);
-            ctx.lineTo(nodes[j].x, nodes[j].y);
-            ctx.strokeStyle = "rgba(0, 224, 255, 0.2)";
-            ctx.stroke();
-          }
-        }
-      }
-
-      nodes.forEach(n => {
-        n.x += n.vx;
-        n.y += n.vy;
-
-        if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
-        if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
-      });
-
-      requestAnimationFrame(draw);
-    }
-
-    draw();
-  </script>
-</body>
-</html>
+    // ------------------ Language Switch ------------------
+    let lang = 'en';
+    const translations = {
+      ar: {
+        name: "فيصل الشراري",
+        role: "مهندس حاسب وشبكات • مطور ألعاب وبرامج",
+        btnCV: "السيرة الذاتية",
+        btnProjects: "المشاريع",
+        btnAchievements: "الإنجازات",
+        btnCertificates: "الشهادات",
+        btnContact: "تواصل",
+        cvTitle: "📄 ملفات السيرة الذاتية",
+        cv
