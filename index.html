@@ -1,35 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Faisal Alsharari - Programmer & Network Engineer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <title>Faisal Alsharari - Developer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #0d0d0d;
-      color: #f0f0f0;
-      scroll-behavior: smooth;
+      font-family: 'Courier New', monospace;
+      background: #000;
+      color: #00ff00;
+      overflow-x: hidden;
+    }
+    .matrix {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: black;
+      z-index: -1;
+      overflow: hidden;
+    }
+    canvas {
+      display: block;
     }
     header {
       text-align: center;
       padding: 100px 20px;
-      background: radial-gradient(circle at top, #1a1a1a, #0d0d0d);
     }
     header h1 {
       font-size: 3em;
-      color: #00ffe7;
-      animation: glow 2s infinite alternate;
-    }
-    @keyframes glow {
-      from { text-shadow: 0 0 10px #00ffe7; }
-      to { text-shadow: 0 0 20px #00ffe7; }
+      color: #00ff00;
+      text-shadow: 0 0 20px #00ff00;
     }
     header p {
       font-size: 1.2em;
-      color: #ccc;
+      color: #0f0;
     }
     .lang-switch {
       position: fixed;
@@ -38,7 +46,7 @@
       z-index: 999;
     }
     .lang-switch button {
-      background: #00ffe7;
+      background: #00ff00;
       color: #000;
       border: none;
       padding: 8px 16px;
@@ -52,14 +60,15 @@
       margin: auto;
     }
     h2 {
-      color: #00ff88;
+      color: #0f0;
       margin-bottom: 20px;
+      text-shadow: 0 0 10px #0f0;
     }
     .btn {
       display: inline-block;
       margin: 10px;
       padding: 12px 20px;
-      background: #00ffe7;
+      background: #00ff00;
       color: #000;
       text-decoration: none;
       border-radius: 8px;
@@ -72,10 +81,10 @@
       margin-top: 30px;
     }
     .card {
-      background: #1f1f1f;
+      background: #111;
       padding: 20px;
       border-radius: 10px;
-      box-shadow: 0 0 10px #000;
+      box-shadow: 0 0 10px #0f0;
       transition: transform 0.3s;
     }
     .card:hover {
@@ -92,49 +101,53 @@
     footer {
       text-align: center;
       padding: 40px;
-      background: #121212;
-      color: #777;
+      background: #000;
+      color: #0f0;
       font-size: 0.9em;
     }
   </style>
 </head>
 <body>
+  <div class="matrix">
+    <canvas id="matrixCanvas"></canvas>
+  </div>
+
   <div class="lang-switch">
     <button onclick="switchLang()">العربية</button>
   </div>
 
   <header data-aos="fade-down">
     <h1>Faisal Alsharari</h1>
-    <p>Programmer • Network Engineer • VRChat Developer</p>
-    <a href="#cv" class="btn">View CV</a>
+    <p>Developer • Network Engineer • VRChat Creator</p>
+    <a href="#cv" class="btn">CV</a>
     <a href="#achievements" class="btn">Achievements</a>
     <a href="#certificates" class="btn">Certificates</a>
     <a href="#contact" class="btn">Contact</a>
   </header>
 
   <section id="cv" data-aos="fade-up">
-    <h2>📄 Download My CV</h2>
-    <a href="https://drive.google.com/file/d/1M6_tuCmEwM43SwcPx07M8r-E1LonWCfb/view?usp=sharing" class="btn" target="_blank">English CV</a>
-    <a href="https://drive.google.com/file/d/11sjFm8LJoTUTYhhJH6tTCWXaV48qUOT-/view?usp=sharing" class="btn" target="_blank">Arabic CV</a>
+    <h2>📄 CV Files</h2>
+    <a href="CV EN.pdf" class="btn" target="_blank">English CV</a>
+    <a href="السيرة بالعربي.pdf" class="btn" target="_blank">Arabic CV</a>
   </section>
 
   <section id="achievements" data-aos="fade-up">
     <h2>🏆 Achievements</h2>
     <div class="cards">
       <div class="card">
-        <h3>🎮 VRChat Chase Game</h3>
-        <p>Designed a multiplayer bomb chase game with synced logic and immersive visuals.</p>
+        <h3>VRChat Chase Game</h3>
+        <p>Multiplayer bomb chase game with synced logic and immersive visuals.</p>
       </div>
       <div class="card">
-        <h3>🤖 RFID Robot Project</h3>
-        <p>Built a smart robot system that tracks and assists users via RFID technology.</p>
+        <h3>RFID Robot Project</h3>
+        <p>Smart robot system that tracks and assists users via RFID technology.</p>
       </div>
       <div class="card">
-        <h3>🎓 Saudi Game Pioneers</h3>
-        <p>Contributed to an interactive game at CODE event with an innovative Saudi team.</p>
+        <h3>Saudi Game Pioneers</h3>
+        <p>Interactive game at CODE event with an innovative Saudi team.</p>
       </div>
       <div class="card">
-        <h3>💼 Volunteering</h3>
+        <h3>Volunteering</h3>
         <p>600+ hours of service and 8 years with Scout Associations in Makkah.</p>
       </div>
     </div>
@@ -145,12 +158,12 @@
     <div class="cards">
       <div class="card">
         <h3>Ethical Hacker</h3>
-        <p>Issued by Jouf University via Cisco Networking Academy - May 2025</p>
+        <p>Jouf University via Cisco Networking Academy - May 2025</p>
         <a href="_certificate_faisal-alsharari4-gmail-com_e63ef6a7-64c8-4f5a-9d5e-94891303e53d.pdf" class="btn" target="_blank">View PDF</a>
       </div>
       <div class="card">
         <h3>CCNA: Introduction to Networks</h3>
-        <p>Issued by Cisco Networking Academy - Dec 2023</p>
+        <p>Cisco Networking Academy - Dec 2023</p>
         <a href="CCNA-_Introduction_to_Networks_certificate_faisal-alsharari4-gmail-com_0786a78a-d680-420c-80cd-bf2195c5207d.pdf" class="btn" target="_blank">View PDF</a>
       </div>
     </div>
@@ -173,7 +186,32 @@
     function switchLang() {
       window.location.href = "arabic.html";
     }
+
+    // Matrix background effect
+    const canvas = document.getElementById("matrixCanvas");
+    const ctx = canvas.getContext("2d");
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+    const letters = "01";
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+    const drops = Array(Math.floor(columns)).fill(1);
+
+    function drawMatrix() {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#0f0";
+      ctx.font = fontSize + "px monospace";
+      for (let i = 0; i < drops.length; i++) {
+        const text = letters[Math.floor(Math.random() * letters.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+    setInterval(drawMatrix, 50);
   </script>
 </body>
 </html>
- 
