@@ -75,9 +75,8 @@
     }
 
     .btn {
-      display: block;
-      width: 220px;
-      margin: 10px auto;
+      display: inline-block;
+      margin: 10px;
       padding: 12px 20px;
       background: #00e0ff;
       color: #000;
@@ -170,16 +169,20 @@
     <h2 id="projectsTitle">💻 اهتمامات ومشاريع</h2>
     <div class="cards">
       <div class="card">
-        <h3 id="proj1Title">مبرمج وشبكات</h3>
-        <p id="proj1Desc">كتبت سكربتات وبرامج لأتمتة الشبكات، إدارة البيانات، والتحكم في الأجهزة المختلفة باستخدام تقنيات متنوعة.</p>
+        <h3 id="proj1Title">مشروع التخرج: نظام روبوت RFID</h3>
+        <p id="proj1Desc">نظام روبوت ذكي لتتبع المستخدمين وتقديم المساعدة باستخدام تقنية RFID، مع التحكم وإدارة البيانات بشكل ذكي وفعال.</p>
       </div>
       <div class="card">
-        <h3 id="proj2Title">تطوير البرامج</h3>
-        <p id="proj2Desc">صممت برامج لإدارة المهام والملفات وتسهيل العمليات الداخلية للشركات الصغيرة والمتوسطة، مع مراعاة الأمن والكفاءة.</p>
+        <h3 id="proj2Title">مبرمج وشبكات</h3>
+        <p id="proj2Desc">كتبت سكربتات وبرامج لأتمتة الشبكات، إدارة البيانات، والتحكم في الأجهزة المختلفة باستخدام تقنيات متنوعة.</p>
       </div>
       <div class="card">
-        <h3 id="proj3Title">تطوير الألعاب</h3>
-        <p id="proj3Desc">طورت ألعاب 2D و3D للكمبيوتر والموبايل، مع دعم اللعب الجماعي، وتطبيق بعض الميزات الذكية لتحسين تجربة المستخدم.</p>
+        <h3 id="proj3Title">تطوير البرامج</h3>
+        <p id="proj3Desc">صممت برامج لإدارة المهام والملفات وتسهيل العمليات الداخلية للشركات الصغيرة والمتوسطة، مع مراعاة الأمن والكفاءة.</p>
+      </div>
+      <div class="card">
+        <h3 id="proj4Title">تطوير الألعاب</h3>
+        <p id="proj4Desc">طورت ألعاب 2D و3D للكمبيوتر والموبايل، مع دعم اللعب الجماعي، وتطبيق بعض الميزات الذكية لتحسين تجربة المستخدم.</p>
       </div>
     </div>
   </section>
@@ -188,12 +191,12 @@
     <h2>🏆 الإنجازات</h2>
     <div class="cards">
       <div class="card">
-        <h3>رواد الألعاب السعودية</h3>
-        <p>عرض تفاعلي للألعاب في فعالية CODE مع فريق سعودي مبتكر.</p>
+        <h3>مشروع التخرج RFID</h3>
+        <p>نظام روبوت ذكي لتتبع المستخدمين وتقديم المساعدة باستخدام تقنية RFID، التطبيق العملي كان جزء رئيسي من تخرجي.</p>
       </div>
       <div class="card">
-        <h3>مشروع الروبوت RFID</h3>
-        <p>نظام روبوت ذكي يتتبع المستخدمين ويقدم المساعدة باستخدام تقنية RFID.</p>
+        <h3>رواد الألعاب السعودية</h3>
+        <p>عرض تفاعلي للألعاب في فعالية CODE مع فريق سعودي مبتكر.</p>
       </div>
       <div class="card">
         <h3>التطوع</h3>
@@ -246,19 +249,21 @@
         role: "Computer & Network Engineer • Software & Game Developer",
         btnCV: "CV",
         btnProjects: "Projects",
-        btnAchievements: "🏆 الإنجازات",
-        btnCertificates: "📜 الشهادات",
-        btnContact: "📬 تواصل",
+        btnAchievements: "🏆 Achievements",
+        btnCertificates: "📜 Certificates",
+        btnContact: "📬 Contact",
         cvTitle: "📄 CV Files",
         cvEN: "English CV",
         cvAR: "Arabic CV",
         projectsTitle: "💻 Interests & Projects",
-        proj1Title: "Programming & Networking",
-        proj1Desc: "Created scripts and software for automating networks, data management, and controlling devices with various technologies.",
-        proj2Title: "Software Development",
-        proj2Desc: "Designed software for task/file management and workflow optimization, with security and efficiency considerations.",
-        proj3Title: "Game Development",
-        proj3Desc: "Developed 2D & 3D games for PC and mobile, including multiplayer support and basic smart features for better user experience."
+        proj1Title: "Graduation Project: RFID Robot System",
+        proj1Desc: "Smart robot system for tracking users and providing assistance using RFID technology. Core practical part of graduation.",
+        proj2Title: "Programming & Networking",
+        proj2Desc: "Created scripts and software for automating networks, data management, and device control using various technologies.",
+        proj3Title: "Software Development",
+        proj3Desc: "Designed software for task/file management and workflow optimization, considering security and efficiency.",
+        proj4Title: "Game Development",
+        proj4Desc: "Developed 2D & 3D games for PC and mobile, with multiplayer support and smart features for better user experience."
       }
     };
 
@@ -282,7 +287,8 @@
         document.getElementById('proj2Desc').innerText = t.proj2Desc;
         document.getElementById('proj3Title').innerText = t.proj3Title;
         document.getElementById('proj3Desc').innerText = t.proj3Desc;
-        document.getElementById('projects').dir = 'ltr';
+        document.getElementById('proj4Title').innerText = t.proj4Title;
+        document.getElementById('proj4Desc').innerText = t.proj4Desc;
         lang = 'en';
         document.getElementById('langBtn').innerText = 'العربية';
       } else {
@@ -297,13 +303,14 @@
         document.getElementById('cvEN').innerText = "السيرة بالإنجليزية";
         document.getElementById('cvAR').innerText = "السيرة بالعربية";
         document.getElementById('projectsTitle').innerText = "💻 اهتمامات ومشاريع";
-        document.getElementById('proj1Title').innerText = "مبرمج وشبكات";
-        document.getElementById('proj1Desc').innerText = "كتبت سكربتات وبرامج لأتمتة الشبكات، إدارة البيانات، والتحكم في الأجهزة المختلفة باستخدام تقنيات متنوعة.";
-        document.getElementById('proj2Title').innerText = "تطوير البرامج";
-        document.getElementById('proj2Desc').innerText = "صممت برامج لإدارة المهام والملفات وتسهيل العمليات الداخلية للشركات الصغيرة والمتوسطة، مع مراعاة الأمن والكفاءة.";
-        document.getElementById('proj3Title').innerText = "تطوير الألعاب";
-        document.getElementById('proj3Desc').innerText = "طورت ألعاب 2D و3D للكمبيوتر والموبايل، مع دعم اللعب الجماعي، وتطبيق بعض الميزات الذكية لتحسين تجربة المستخدم.";
-        document.getElementById('projects').dir = 'rtl';
+        document.getElementById('proj1Title').innerText = "مشروع التخرج: نظام روبوت RFID";
+        document.getElementById('proj1Desc').innerText = "نظام روبوت ذكي لتتبع المستخدمين وتقديم المساعدة باستخدام تقنية RFID، مع التحكم وإدارة البيانات بشكل ذكي وفعال.";
+        document.getElementById('proj2Title').innerText = "مبرمج وشبكات";
+        document.getElementById('proj2Desc').innerText = "كتبت سكربتات وبرامج لأتمتة الشبكات، إدارة البيانات، والتحكم في الأجهزة المختلفة باستخدام تقنيات متنوعة.";
+        document.getElementById('proj3Title').innerText = "تطوير البرامج";
+        document.getElementById('proj3Desc').innerText = "صممت برامج لإدارة المهام والملفات وتسهيل العمليات الداخلية للشركات الصغيرة والمتوسطة، مع مراعاة الأمن والكفاءة.";
+        document.getElementById('proj4Title').innerText = "تطوير الألعاب";
+        document.getElementById('proj4Desc').innerText = "طورت ألعاب 2D و3D للكمبيوتر والموبايل، مع دعم اللعب الجماعي، وتطبيق بعض الميزات الذكية لتحسين تجربة المستخدم.";
         lang = 'ar';
         document.getElementById('langBtn').innerText = 'English';
       }
