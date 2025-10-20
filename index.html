@@ -13,21 +13,29 @@
       color: #e0e0e0;
       overflow-x: hidden;
     }
-    .background-grid {
+    .network-bg {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: linear-gradient(90deg, #1a1a1a 1px, transparent 1px),
-                        linear-gradient(180deg, #1a1a1a 1px, transparent 1px);
-      background-size: 40px 40px;
       z-index: -1;
-      animation: moveGrid 20s linear infinite;
+      background: radial-gradient(circle, #0a0a0a 0%, #000 100%);
+      overflow: hidden;
     }
-    @keyframes moveGrid {
-      0% { background-position: 0 0; }
-      100% { background-position: 100px 100px; }
+    .network-bg::before {
+      content: "";
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background-image: url('https://raw.githubusercontent.com/FaisalCEng/nfc-cv/main/network-lines.gif');
+      background-size: cover;
+      opacity: 0.15;
+      animation: scrollBg 60s linear infinite;
+    }
+    @keyframes scrollBg {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(-25%, -25%); }
     }
     header {
       text-align: center;
@@ -79,7 +87,7 @@
     }
     .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
       margin-top: 30px;
     }
@@ -111,7 +119,7 @@
   </style>
 </head>
 <body>
-  <div class="background-grid"></div>
+  <div class="network-bg"></div>
 
   <div class="lang-switch">
     <button onclick="switchLang()">العربية</button>
