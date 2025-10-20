@@ -178,45 +178,49 @@ function switchLang(){
   }
 }
 
-/* ---------------- Canvas Network with scroll effect ---------------- */
+/* Canvas with scroll-based parallax */
 const canvas=document.getElementById("networkCanvas");
 const ctx=canvas.getContext("2d");
 canvas.width=window.innerWidth; canvas.height=window.innerHeight;
+
 window.addEventListener("resize",()=>{canvas.width=window.innerWidth;canvas.height=window.innerHeight;});
 
 let nodes=[];
-for(let i=0;i<80;i++){
+for(let i=0;i<100;i++){
   nodes.push({
     x:Math.random()*canvas.width,
     y:Math.random()*canvas.height,
-    vx:(Math.random()-0.5)*0.5,
-    vy:(Math.random()-0.5)*0.5,
-    size: Math.random()*2+1
+    vx:(Math.random()-0.5)*1.2,
+    vy:(Math.random()-0.5)*1.2,
+    size: Math.random()*2.5+1
   });
-}
+});
 
-let scrollOffset=0;
-window.addEventListener('scroll',()=>{scrollOffset=window.scrollY/50;});
+let scrollOffsetX=0, scrollOffsetY=0;
+window.addEventListener('scroll',()=>{scrollOffsetY=window.scrollY/20;});
+window.addEventListener('touchmove',e=>{scrollOffsetY=window.scrollY/20;});
 
 function draw(){
   ctx.clearRect(0,0,canvas.width,canvas.height);
   nodes.forEach(n=>{
+    const nx=n.x+scrollOffsetX;
+    const ny=n.y+scrollOffsetY;
     ctx.beginPath();
-    ctx.arc(n.x + scrollOffset, n.y + scrollOffset, n.size,0,Math.PI*2);
+    ctx.arc(nx, ny, n.size,0,Math.PI*2);
     ctx.fillStyle="#00e0ff";
     ctx.fill();
   });
 
   for(let i=0;i<nodes.length;i++){
     for(let j=i+1;j<nodes.length;j++){
-      let dx=nodes[i].x-nodes[j].x + scrollOffset;
-      let dy=nodes[i].y-nodes[j].y + scrollOffset;
+      let dx=(nodes[i].x-nodes[j].x)+scrollOffsetX;
+      let dy=(nodes[i].y-nodes[j].y)+scrollOffsetY;
       let dist=Math.sqrt(dx*dx+dy*dy);
-      if(dist<120){
+      if(dist<140){
         ctx.beginPath();
-        ctx.moveTo(nodes[i].x + scrollOffset, nodes[i].y + scrollOffset);
-        ctx.lineTo(nodes[j].x + scrollOffset, nodes[j].y + scrollOffset);
-        ctx.strokeStyle="rgba(0,224,255,0.2)";
+        ctx.moveTo(nodes[i].x + scrollOffsetX, nodes[i].y + scrollOffsetY);
+        ctx.lineTo(nodes[j].x + scrollOffsetX, nodes[j].y + scrollOffsetY);
+        ctx.strokeStyle="rgba(0,224,255,0.25)";
         ctx.stroke();
       }
     }
