@@ -4,47 +4,34 @@
   <meta charset="UTF-8">
   <title>Faisal Alsharari - Programmer & Network Engineer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom right, #0f0f0f, #1a1a1a);
+      background: #0f0f0f;
       color: #f0f0f0;
+      scroll-behavior: smooth;
+    }
+    section {
+      padding: 80px 20px;
+      max-width: 1000px;
+      margin: auto;
     }
     header {
       text-align: center;
-      padding: 40px 20px;
-      background: #121212;
-      border-bottom: 1px solid #333;
+      padding: 100px 20px;
+      background: linear-gradient(to right, #0f0f0f, #1a1a1a);
     }
     header h1 {
-      font-size: 2.5em;
+      font-size: 3em;
       color: #00ffe7;
     }
     header p {
       font-size: 1.2em;
       color: #ccc;
     }
-    .lang-switch {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-    }
-    .lang-switch button {
-      background: #00ffe7;
-      color: #000;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    .section {
-      padding: 40px 20px;
-      max-width: 900px;
-      margin: auto;
-    }
-    .pdf-buttons a {
+    .btn {
       display: inline-block;
       margin: 10px;
       padding: 12px 20px;
@@ -80,10 +67,25 @@
     }
     footer {
       text-align: center;
-      padding: 20px;
+      padding: 40px;
       background: #121212;
       color: #777;
       font-size: 0.9em;
+    }
+    .lang-switch {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 999;
+    }
+    .lang-switch button {
+      background: #00ffe7;
+      color: #000;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
     }
   </style>
 </head>
@@ -92,18 +94,22 @@
     <button onclick="switchLang()">العربية</button>
   </div>
 
-  <header>
+  <header data-aos="fade-down">
     <h1>Faisal Alsharari</h1>
     <p>Programmer • Network Engineer • VRChat Developer</p>
+    <a href="#cv" class="btn">View CV</a>
+    <a href="#achievements" class="btn">Achievements</a>
+    <a href="#certificates" class="btn">Certificates</a>
+    <a href="#contact" class="btn">Contact</a>
   </header>
 
-  <div class="section">
+  <section id="cv" data-aos="fade-up">
     <h2>📄 Download My CV</h2>
-    <div class="pdf-buttons">
-      <a href="CV EN.pdf" target="_blank">English CV</a>
-      <a href="السيرة بالعربي.pdf" target="_blank">Arabic CV</a>
-    </div>
+    <a href="CV EN.pdf" class="btn" target="_blank">English CV</a>
+    <a href="السيرة بالعربي.pdf" class="btn" target="_blank">Arabic CV</a>
+  </section>
 
+  <section id="achievements" data-aos="fade-up">
     <h2>🏆 Achievements</h2>
     <div class="cards">
       <div class="card">
@@ -111,7 +117,7 @@
         <p>Designed a multiplayer bomb chase game with synced logic and immersive visuals.</p>
       </div>
       <div class="card">
-        <h3>🧠 RFID Robot Project</h3>
+        <h3>🤖 RFID Robot Project</h3>
         <p>Built a smart robot system that tracks and assists users via RFID technology.</p>
       </div>
       <div class="card">
@@ -123,13 +129,38 @@
         <p>600+ hours of service and 8 years with Scout Associations in Makkah.</p>
       </div>
     </div>
-  </div>
+  </section>
+
+  <section id="certificates" data-aos="fade-up">
+    <h2>📜 Certificates</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Ethical Hacker</h3>
+        <p>Issued by Jouf University via Cisco Networking Academy - May 2025</p>
+        <a href="_certificate_faisal-alsharari4-gmail-com_e63ef6a7-64c8-4f5a-9d5e-94891303e53d.pdf" class="btn" target="_blank">View PDF</a>
+      </div>
+      <div class="card">
+        <h3>CCNA: Introduction to Networks</h3>
+        <p>Issued by Cisco Networking Academy - Dec 2023</p>
+        <a href="CCNA-_Introduction_to_Networks_certificate_faisal-alsharari4-gmail-com_0786a78a-d680-420c-80cd-bf2195c5207d.pdf" class="btn" target="_blank">View PDF</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" data-aos="fade-up">
+    <h2>📬 Contact</h2>
+    <p>Email: <a href="mailto:Faisal.alsharari4@gmail.com">Faisal.alsharari4@gmail.com</a></p>
+    <p>Phone: +966-55-444-7552</p>
+    <p>Location: Al Qurayyat, Al Jawf, Saudi Arabia</p>
+  </section>
 
   <footer>
     &copy; 2025 Faisal Alsharari. All rights reserved.
   </footer>
 
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
+    AOS.init();
     function switchLang() {
       window.location.href = "arabic.html";
     }
