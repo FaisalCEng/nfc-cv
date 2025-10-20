@@ -100,7 +100,7 @@
     #cv .btn {
       display: block;
       margin: 15px auto;
-      width: 200px;
+      width: 220px;
     }
 
     .cards {
@@ -173,8 +173,8 @@
 
   <section id="cv" data-aos="fade-up">
     <h2 id="cvTitle">📄 ملفات السيرة الذاتية</h2>
-    <a href="السيرة بالعربي.pdf" class="btn" target="_blank" id="cvAR">السيرة بالعربية</a>
-    <a href="CV EN.pdf" class="btn" target="_blank" id="cvEN">السيرة بالإنجليزية</a>
+    <a href="https://drive.google.com/file/d/11sjFm8LJoTUTYhhJH6tTCWXaV48qUOT-/view?usp=sharing" class="btn" target="_blank" id="cvAR">السيرة بالعربية</a>
+    <a href="https://drive.google.com/file/d/1M6_tuCmEwM43SwcPx07M8r-E1LonWCfb/view?usp=sharing" class="btn" target="_blank" id="cvEN">السيرة بالإنجليزية</a>
   </section>
 
   <section id="projects" data-aos="fade-up">
@@ -222,7 +222,7 @@
   </section>
 
   <section id="certificates" data-aos="fade-up">
-    <h2 id="certificatesTitle">📜 الشهادات</h2>
+    <h2>📜 الشهادات</h2>
     <div class="cards">
       <div class="card">
         <img src="ethical-hacker.png" alt="شهادة الهاكر الأخلاقي" />
@@ -275,10 +275,7 @@
         proj3Title: "Software Development",
         proj3Desc: "Designed software for task/file management and workflow optimization, considering security and efficiency.",
         proj4Title: "Game Development",
-        proj4Desc: "Developed 2D & 3D games for PC and mobile, with multiplayer support and smart features for better user experience.",
-        achievementsTitle: "Achievements",
-        certificatesTitle: "Certificates",
-        contactTitle: "Contact"
+        proj4Desc: "Developed 2D & 3D games for PC and mobile, with multiplayer support and smart features for better user experience."
       }
     };
 
@@ -304,11 +301,6 @@
         document.getElementById('proj3Desc').innerText = t.proj3Desc;
         document.getElementById('proj4Title').innerText = t.proj4Title;
         document.getElementById('proj4Desc').innerText = t.proj4Desc;
-
-        document.getElementById('achievements').querySelector('h2').innerText = t.achievementsTitle;
-        document.getElementById('certificates').querySelector('h2').innerText = t.certificatesTitle;
-        document.getElementById('contact').querySelector('h2').innerText = t.contactTitle;
-
         lang = 'en';
         document.getElementById('langBtn').innerText = 'العربية';
       } else {
@@ -331,11 +323,6 @@
         document.getElementById('proj3Desc').innerText = "صممت برامج لإدارة المهام والملفات وتسهيل العمليات الداخلية للشركات الصغيرة والمتوسطة، مع مراعاة الأمن والكفاءة.";
         document.getElementById('proj4Title').innerText = "تطوير الألعاب";
         document.getElementById('proj4Desc').innerText = "طورت ألعاب 2D و3D للكمبيوتر والموبايل، مع دعم اللعب الجماعي، وتطبيق بعض الميزات الذكية لتحسين تجربة المستخدم.";
-
-        document.getElementById('achievements').querySelector('h2').innerText = "🏆 الإنجازات";
-        document.getElementById('certificates').querySelector('h2').innerText = "📜 الشهادات";
-        document.getElementById('contact').querySelector('h2').innerText = "📬 تواصل";
-
         lang = 'ar';
         document.getElementById('langBtn').innerText = 'English';
       }
@@ -376,12 +363,12 @@
         for (let j = i + 1; j < nodes.length; j++) {
           let dx = nodes[i].x - nodes[j].x;
           let dy = nodes[i].y - nodes[j].y;
-          let dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 120) {
+          let dist = Math.sqrt(dx*dx + dy*dy);
+          if(dist < 120){
             ctx.beginPath();
             ctx.moveTo(nodes[i].x, nodes[i].y);
             ctx.lineTo(nodes[j].x, nodes[j].y);
-            ctx.strokeStyle = "rgba(0, 224, 255, 0.2)";
+            ctx.strokeStyle = "rgba(0,224,255,0.2)";
             ctx.stroke();
           }
         }
@@ -390,14 +377,12 @@
       nodes.forEach(n => {
         n.x += n.vx;
         n.y += n.vy;
-
-        if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
-        if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
+        if(n.x<0 || n.x>canvas.width) n.vx*=-1;
+        if(n.y<0 || n.y>canvas.height) n.vy*=-1;
       });
 
       requestAnimationFrame(draw);
     }
-
     draw();
   </script>
 </body>
