@@ -13,29 +13,11 @@
       color: #e0e0e0;
       overflow-x: hidden;
     }
-    .network-bg {
+    canvas {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
       z-index: -1;
-      background: radial-gradient(circle, #0a0a0a 0%, #000 100%);
-      overflow: hidden;
-    }
-    .network-bg::before {
-      content: "";
-      position: absolute;
-      width: 200%;
-      height: 200%;
-      background-image: url('https://raw.githubusercontent.com/FaisalCEng/nfc-cv/main/network-lines.gif');
-      background-size: cover;
-      opacity: 0.15;
-      animation: scrollBg 60s linear infinite;
-    }
-    @keyframes scrollBg {
-      0% { transform: translate(0, 0); }
-      100% { transform: translate(-25%, -25%); }
     }
     header {
       text-align: center;
@@ -97,6 +79,7 @@
       border-radius: 10px;
       box-shadow: 0 0 10px #000;
       transition: transform 0.3s;
+      text-align: center;
     }
     .card:hover {
       transform: scale(1.05);
@@ -109,6 +92,12 @@
       color: #ccc;
       font-size: 0.95em;
     }
+    .card img {
+      width: 100%;
+      max-width: 250px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
     footer {
       text-align: center;
       padding: 40px;
@@ -119,7 +108,7 @@
   </style>
 </head>
 <body>
-  <div class="network-bg"></div>
+  <canvas id="networkCanvas"></canvas>
 
   <div class="lang-switch">
     <button onclick="switchLang()">العربية</button>
@@ -166,11 +155,13 @@
     <h2>📜 Certificates</h2>
     <div class="cards">
       <div class="card">
+        <img src="ethical-hacker.png" alt="Ethical Hacker Certificate" />
         <h3>Ethical Hacker</h3>
         <p>Jouf University via Cisco Networking Academy - May 2025</p>
         <a href="_certificate_faisal-alsharari4-gmail-com_e63ef6a7-64c8-4f5a-9d5e-94891303e53d.pdf" class="btn" target="_blank">View PDF</a>
       </div>
       <div class="card">
+        <img src="ccna-intro.png" alt="CCNA Certificate" />
         <h3>CCNA: Introduction to Networks</h3>
         <p>Cisco Networking Academy - Dec 2023</p>
         <a href="CCNA-_Introduction_to_Networks_certificate_faisal-alsharari4-gmail-com_0786a78a-d680-420c-80cd-bf2195c5207d.pdf" class="btn" target="_blank">View PDF</a>
@@ -195,6 +186,22 @@
     function switchLang() {
       window.location.href = "arabic.html";
     }
-  </script>
-</body>
-</html>
+
+    // Canvas network background
+    const canvas = document.getElementById("networkCanvas");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let nodes = [];
+    for (let i = 0; i < 80; i++) {
+      nodes.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5
+      });
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0,
