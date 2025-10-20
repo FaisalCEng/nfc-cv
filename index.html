@@ -2,25 +2,95 @@
 <html lang="ar">
 <head>
   <meta charset="UTF-8">
-  <title>سيرة فيصل الذاتية</title>
+  <title>فيصل الشراري - مبرمج ومهندس شبكات</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body { font-family: Arial; text-align: center; padding: 50px; background: #f0f0f0; }
-    .card { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 0 10px #aaa; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #0f0f0f;
+      color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 700px;
+      padding: 30px;
+      background: #1c1c1c;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+    }
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      color: #00ffe7;
+    }
+    p.title {
+      font-size: 1.2em;
+      margin-bottom: 20px;
+      color: #ccc;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      margin: 10px 0;
+      padding-left: 20px;
+      position: relative;
+    }
+    li::before {
+      content: "💻";
+      position: absolute;
+      left: 0;
+    }
+    .contact {
+      margin-top: 30px;
+      font-size: 0.95em;
+    }
+    .contact a {
+      color: #00ffe7;
+      text-decoration: none;
+    }
+    .code-box {
+      background: #2a2a2a;
+      padding: 15px;
+      border-radius: 8px;
+      font-family: monospace;
+      margin-top: 20px;
+      color: #00ff88;
+      overflow-x: auto;
+    }
   </style>
 </head>
 <body>
-  <div class="card">
+  <div class="container">
     <h1>فيصل مدالله قاسم الشراري</h1>
-    <p>مهندس شبكات ومطور VRChat</p>
-    <h3>الإنجازات:</h3>
+    <p class="title">مبرمج | مهندس شبكات | مطور VRChat</p>
+
+    <h3>🚀 الإنجازات:</h3>
     <ul>
-      <li>تصميم لعبة مطاردة في VRChat</li>
-      <li>برمجة متقدمة باستخدام UdonSharp</li>
+      <li>تصميم لعبة مطاردة وقنبلة في VRChat</li>
+      <li>برمجة متقدمة باستخدام UdonSharp و Unity</li>
       <li>تنظيم تحديات جماعية في الواقع الافتراضي</li>
+      <li>كتابة سكربتات متزامنة لجميع اللاعبين</li>
     </ul>
-    <h3>للتواصل:</h3>
-    <p>Email: faisal@example.com</p>
-    <p>LinkedIn: linkedin.com/in/faisal</p>
+
+    <h3>🧠 مقتطف من كودي:</h3>
+    <div class="code-box">
+      void ExplodeBomb() {<br>
+      &nbsp;&nbsp;SendCustomNetworkEvent(NetworkEventTarget.All, "TriggerExplosion");<br>
+      }
+    </div>
+
+    <div class="contact">
+      <h3>📬 للتواصل:</h3>
+      <p>Email: <a href="mailto:faisal@example.com">faisal@example.com</a></p>
+      <p>LinkedIn: <a href="https://linkedin.com/in/faisal" target="_blank">linkedin.com/in/faisal</a></p>
+      <p>GitHub: <a href="https://github.com/faisalceng" target="_blank">github.com/faisalceng</a></p>
+    </div>
   </div>
 </body>
 </html>
