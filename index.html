@@ -1,211 +1,202 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8" />
-<title>فيصل الشراري - مطور برامج وألعاب</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-<style>
-body {margin:0;font-family:'Segoe UI',sans-serif;background:#0a0a0a;color:#a0e0ff;overflow-x:hidden;text-align:right;}
-canvas {position:fixed;top:0;left:0;z-index:-1;}
-header {text-align:center;padding:80px 20px;}
-header h1 {font-size:3em;color:#00e0ff;text-shadow:0 0 15px #00e0ff;}
-header p {font-size:1.2em;color:#a0e0ff;margin-bottom:30px;}
-.lang-switch {position:fixed;top:20px;left:20px;z-index:999;}
-.lang-switch button {background:#00e0ff;color:#000;border:none;padding:8px 16px;border-radius:6px;cursor:pointer;font-weight:bold;transition:0.3s;}
-.lang-switch button:hover {background:#00c8ff;}
-section {padding:60px 20px;max-width:1000px;margin:auto;}
-h2 {color:#00e0ff;margin-bottom:30px;text-shadow:0 0 8px #00e0ff;text-align:center;}
-.btn {display:inline-block;margin:10px;padding:12px 20px;background:#00e0ff;color:#000;text-decoration:none;border-radius:8px;font-weight:bold;text-align:center;transition:0.3s;}
-.btn:hover {background:#00c8ff;}
-header .btn {display:inline-block;}
-#cv .btn {display:block;margin:15px auto;width:220px;}
-.cards {display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:30px;}
-.card {background:#101010;padding:25px;border-radius:12px;box-shadow:0 0 20px #000;transition:transform 0.5s,box-shadow 0.5s;text-align:center;}
-.card:hover {transform:scale(1.05);box-shadow:0 0 30px #00e0ff;}
-.card h3 {color:#00e0ff;margin-bottom:12px;font-size:1.3em;}
-.card p {color:#a0e0ff;font-size:0.95em;line-height:1.5;}
-.card img {width:100%;max-width:250px;border-radius:8px;margin-bottom:12px;}
-footer {text-align:center;padding:40px 20px;background:#0a0a0a;color:#66cfff;font-size:0.95em;}
-footer p {margin:5px 0;}
-.social-icons a {color:#00e0ff;margin:0 10px;font-size:1.5em;transition:0.3s;}
-.social-icons a:hover {color:#00c8ff;}
-@media(max-width:600px){header h1{font-size:2.2em;}header p{font-size:1em;}.cards{gap:15px;}}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>فيصل الشراري | مهندس ومطور</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    body {
+      font-family: "Tajawal", sans-serif;
+      background: linear-gradient(to bottom right, #e3f2fd, #bbdefb);
+      color: #0d47a1;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      direction: rtl;
+      transition: all 0.3s ease;
+    }
+    header {
+      background: rgba(13, 71, 161, 0.9);
+      color: white;
+      padding: 20px 0;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+    nav {
+      margin-top: 10px;
+    }
+    nav button {
+      margin: 5px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background-color: #64b5f6;
+      color: white;
+      cursor: pointer;
+      font-size: 1em;
+      transition: 0.3s;
+    }
+    nav button:hover {
+      background-color: #2196f3;
+    }
+    section {
+      margin: 40px auto;
+      max-width: 800px;
+      padding: 20px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #0d47a1;
+    }
+    a {
+      color: #0d47a1;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .cv-buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .cv-buttons a {
+      display: inline-block;
+      padding: 12px 25px;
+      background-color: #42a5f5;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+      width: 200px;
+    }
+    .cv-buttons a:hover {
+      background-color: #1e88e5;
+    }
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      font-size: 1.8em;
+      margin-top: 15px;
+    }
+    .social-icons a {
+      color: #0d47a1;
+      transition: 0.3s;
+    }
+    .social-icons a:hover {
+      color: #1976d2;
+    }
+  </style>
 </head>
 <body>
-<canvas id="networkCanvas"></canvas>
+  <header>
+    <h1 id="name">فيصل الشراري</h1>
+    <p id="title">مهندس حاسب آلي وشبكات | مطور برامج وألعاب</p>
+    <nav>
+      <button onclick="changeLang('ar')">🇸🇦 العربية</button>
+      <button onclick="changeLang('en')">🇬🇧 English</button>
+    </nav>
+  </header>
 
-<div class="lang-switch">
-  <button onclick="switchLang()"><span id="langBtn">English</span></button>
-</div>
+  <section id="about">
+    <h2 id="aboutTitle">نبذة</h2>
+    <p id="aboutText">
+      مهندس حاسب آلي وشبكات، أمتلك شغفاً بتطوير البرمجيات والألعاب. أعمل على ابتكار حلول تقنية تجمع بين الكفاءة والإبداع، وأسعى دائماً لتعلم تقنيات جديدة في مجالات البرمجة والشبكات.
+    </p>
+  </section>
 
-<header data-aos="fade-down">
-  <h1 id="name">فيصل الشراري</h1>
-  <p id="role">هندسة الحاسب الآلي والشبكات • مطور برامج وألعاب</p>
-  <a href="#cv" class="btn" id="btnCV">السيرة الذاتية</a>
-  <a href="#projects" class="btn" id="btnProjects">اهتمامات ومشاريع</a>
-  <a href="#achievements" class="btn" id="btnAchievements">الإنجازات</a>
-  <a href="#certificates" class="btn" id="btnCertificates">الشهادات</a>
-  <a href="#contact" class="btn" id="btnContact">تواصل</a>
-</header>
+  <section id="skills">
+    <h2 id="skillsTitle">الاهتمامات والمهارات</h2>
+    <ul id="skillsList" style="list-style:none; padding:0;">
+      <li>🖥️ هندسة الحاسب الآلي والشبكات</li>
+      <li>💻 تطوير البرمجيات والتطبيقات</li>
+      <li>🎮 تطوير الألعاب</li>
+      <li>☁️ إدارة الأنظمة والخوادم</li>
+    </ul>
+  </section>
 
-<section id="cv" data-aos="fade-up">
-  <h2 id="cvTitle">📄 ملفات السيرة الذاتية</h2>
-  <a href="https://drive.google.com/file/d/11sjFm8LJoTUTYhhJH6tTCWXaV48qUOT-/view?usp=sharing" class="btn" target="_blank" id="cvAR">السيرة بالعربية</a>
-  <a href="https://drive.google.com/file/d/1M6_tuCmEwM43SwcPx07M8r-E1LonWCfb/view?usp=sharing" class="btn" target="_blank" id="cvEN">السيرة بالإنجليزية</a>
-</section>
+  <section id="achievements">
+    <h2 id="achievementsTitle">الإنجازات والمشاريع</h2>
+    <ul id="achievementsList" style="list-style:none; padding:0;">
+      <li>📡 مشروع التخرج: نظام تتبع باستخدام تقنية RFID لزيادة الكفاءة والأمان.</li>
+      <li>💡 تطوير عدد من التطبيقات الشخصية لتبسيط المهام اليومية.</li>
+      <li>🎯 المساهمة في مشاريع مفتوحة المصدر.</li>
+    </ul>
+  </section>
 
-<section id="projects" data-aos="fade-up">
-  <h2 id="projectsTitle">💻 اهتمامات ومشاريع</h2>
-  <div class="cards">
-    <div class="card">
-      <h3 id="proj1Title">مشروع التخرج: نظام روبوت RFID</h3>
-      <p id="proj1Desc">نظام روبوت ذكي لتتبع المستخدمين وتقديم المساعدة باستخدام تقنية RFID، مع التحكم وإدارة البيانات بشكل ذكي وفعال.</p>
+  <section id="certificates">
+    <h2 id="certificatesTitle">الشهادات</h2>
+    <ul id="certificatesList" style="list-style:none; padding:0;">
+      <li>🎓 درجة البكالوريوس في هندسة الحاسب الآلي والشبكات</li>
+      <li>📜 شهادات تدريبية في تطوير البرمجيات والشبكات</li>
+    </ul>
+  </section>
+
+  <section id="cv">
+    <h2 id="cvTitle">السيرة الذاتية</h2>
+    <div class="cv-buttons">
+      <a href="https://drive.google.com/file/d/11sjFm8LJoTUTYhhJH6tTCWXaV48qUOT-/view?usp=sharing" target="_blank">📄 السيرة الذاتية (عربي)</a>
+      <a href="https://drive.google.com/file/d/1M6_tuCmEwM43SwcPx07M8r-E1LonWCfb/view?usp=sharing" target="_blank">📄 السيرة الذاتية (English)</a>
     </div>
-    <div class="card">
-      <h3 id="proj2Title">مبرمج وشبكات</h3>
-      <p id="proj2Desc">كتبت سكربتات وبرامج لأتمتة الشبكات، إدارة البيانات، والتحكم في الأجهزة المختلفة باستخدام تقنيات متنوعة.</p>
-    </div>
-    <div class="card">
-      <h3 id="proj3Title">تطوير البرامج</h3>
-      <p id="proj3Desc">صممت برامج لإدارة المهام والملفات وتسهيل العمليات الداخلية للشركات الصغيرة والمتوسطة، مع مراعاة الأمن والكفاءة.</p>
-    </div>
-    <div class="card">
-      <h3 id="proj4Title">تطوير الألعاب</h3>
-      <p id="proj4Desc">طورت ألعاب 2D و3D للكمبيوتر والموبايل، مع دعم اللعب الجماعي، وتطبيق بعض الميزات الذكية لتحسين تجربة المستخدم.</p>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section id="achievements" data-aos="fade-up">
-  <h2 id="achTitle">🏆 الإنجازات</h2>
-  <div class="cards">
-    <div class="card">
-      <h3 id="ach1Title">مشروع التخرج RFID</h3>
-      <p id="ach1Desc">نظام روبوت ذكي لتتبع المستخدمين وتقديم المساعدة باستخدام تقنية RFID، التطبيق العملي كان جزء رئيسي من تخرجي.</p>
+  <section id="contact">
+    <h2 id="contactTitle">📬 تواصل</h2>
+    <p><i class="fas fa-envelope"></i> <a href="mailto:Faisal.alsharari4@gmail.com">Faisal.alsharari4@gmail.com</a></p>
+    <p><i class="fas fa-phone"></i> +966554447552</p>
+    <div class="social-icons">
+      <a href="https://www.snapchat.com/add/f_0105" target="_blank" title="Snapchat"><i class="fab fa-snapchat"></i></a>
+      <a href="https://x.com/Faisal_CEng" target="_blank" title="X / Twitter"><i class="fab fa-x-twitter"></i></a>
+      <a href="https://www.linkedin.com/in/faisal-alsharari-161556366/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
     </div>
-    <div class="card">
-      <h3 id="ach2Title">رواد الألعاب السعودية</h3>
-      <p id="ach2Desc">عرض تفاعلي للألعاب في فعالية CODE مع فريق سعودي مبتكر.</p>
-    </div>
-    <div class="card">
-      <h3 id="ach3Title">التطوع</h3>
-      <p id="ach3Desc">أكثر من 600 ساعة خدمة و8 سنوات مع جمعيات الكشافة في مكة.</p>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section id="certificates" data-aos="fade-up">
-  <h2 id="certTitle">📜 الشهادات</h2>
-  <div class="cards">
-    <div class="card">
-      <img src="ethical-hacker.png" alt="شهادة الهاكر الأخلاقي" />
-      <h3 id="cert1Title">هاكر أخلاقي</h3>
-      <p id="cert1Desc">جامعة الجوف عبر Cisco Networking Academy - مايو 2025</p>
-      <a href="certificate_faisal-alsharari4-gmail-com_e63ef6a7-64c8-4f5a-9d5e-94891303e53d.pdf" class="btn" target="_blank">عرض PDF</a>
-    </div>
-    <div class="card">
-      <img src="ccna-intro.png" alt="شهادة CCNA" />
-      <h3 id="cert2Title">CCNA: مقدمة في الشبكات</h3>
-      <p id="cert2Desc">Cisco Networking Academy - ديسمبر 2023</p>
-      <a href="CCNA-_Introduction_to_Networks_certificate_faisal-alsharari4-gmail-com_0786a78a-d680-420c-80cd-bf2195c5207d.pdf" class="btn" target="_blank">عرض PDF</a>
-    </div>
-  </div>
-</section>
+  <script>
+    const content = {
+      ar: {
+        dir: "rtl",
+        name: "فيصل الشراري",
+        title: "مهندس حاسب آلي وشبكات | مطور برامج وألعاب",
+        aboutTitle: "نبذة",
+        aboutText: "مهندس حاسب آلي وشبكات، أمتلك شغفاً بتطوير البرمجيات والألعاب...",
+        skillsTitle: "الاهتمامات والمهارات",
+        achievementsTitle: "الإنجازات والمشاريع",
+        certificatesTitle: "الشهادات",
+        cvTitle: "السيرة الذاتية",
+        contactTitle: "📬 تواصل",
+      },
+      en: {
+        dir: "ltr",
+        name: "Faisal Alsharari",
+        title: "Computer & Network Engineer | Software and Game Developer",
+        aboutTitle: "About Me",
+        aboutText: "Computer and network engineer passionate about software and game development...",
+        skillsTitle: "Interests & Skills",
+        achievementsTitle: "Achievements & Projects",
+        certificatesTitle: "Certificates",
+        cvTitle: "Curriculum Vitae",
+        contactTitle: "📬 Contact",
+      }
+    };
 
-<section id="contact" data-aos="fade-up">
-  <h2 id="contactTitle">📬 تواصل</h2>
-  <p><i class="fas fa-envelope"></i> <a href="mailto:Faisal.alsharari4@gmail.com">Faisal.alsharari4@gmail.com</a></p>
-  <p><i class="fas fa-phone"></i> +966554447552</p>
-  <div class="social-icons">
-    <a href="https://www.snapchat.com/add/f_0105" target="_blank" title="Snapchat"><i class="fab fa-snapchat"></i></a>
-    <a href="https://x.com/Faisal_CEng" target="_blank" title="X / Twitter"><i class="fab fa-x-twitter"></i></a>
-    <a href="https://www.linkedin.com/in/faisal-alsharari-161556366/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-  </div>
-</section>
-
-<footer>
-  &copy; 2025 فيصل الشراري. جميع الحقوق محفوظة.
-</footer>
-
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-AOS.init();
-
-let lang = 'ar';
-const translations = {
-  en: {
-    name:"Faisal Alsharari", role:"Computer & Network Engineering • Software & Game Developer",
-    btnCV:"CV", btnProjects:"Projects", btnAchievements:"Achievements", btnCertificates:"Certificates", btnContact:"Contact",
-    cvTitle:"📄 CV Files", cvEN:"English CV", cvAR:"Arabic CV",
-    projectsTitle:"💻 Interests & Projects",
-    proj1Title:"Graduation Project: RFID Robot System", proj1Desc:"Smart robot system for tracking users and providing assistance using RFID technology. Core practical part of graduation.",
-    proj2Title:"Programming & Networking", proj2Desc:"Created scripts and software for automating networks, data management, and device control using various technologies.",
-    proj3Title:"Software Development", proj3Desc:"Designed software for task/file management and workflow optimization, considering security and efficiency.",
-    proj4Title:"Game Development", proj4Desc:"Developed 2D & 3D games for PC and mobile, with multiplayer support and smart features for better user experience."
-  },
-  ar: {}
-};
-
-function switchLang(){
-  if(lang==='ar'){
-    const t=translations.en;
-    document.getElementById('name').innerHTML=t.name;
-    document.getElementById('role').innerHTML=t.role;
-    document.getElementById('btnCV').innerHTML=t.btnCV;
-    document.getElementById('btnProjects').innerHTML=t.btnProjects;
-    document.getElementById('btnAchievements').innerHTML=t.btnAchievements;
-    document.getElementById('btnCertificates').innerHTML=t.btnCertificates;
-    document.getElementById('btnContact').innerHTML=t.btnContact;
-    document.getElementById('cvTitle').innerHTML=t.cvTitle;
-    document.getElementById('cvEN').innerHTML=t.cvEN;
-    document.getElementById('cvAR').innerHTML=t.cvAR;
-    document.getElementById('projectsTitle').innerHTML=t.projectsTitle;
-    document.getElementById('proj1Title').innerHTML=t.proj1Title;
-    document.getElementById('proj1Desc').innerHTML=t.proj1Desc;
-    document.getElementById('proj2Title').innerHTML=t.proj2Title;
-    document.getElementById('proj2Desc').innerHTML=t.proj2Desc;
-    document.getElementById('proj3Title').innerHTML=t.proj3Title;
-    document.getElementById('proj3Desc').innerHTML=t.proj3Desc;
-    document.getElementById('proj4Title').innerHTML=t.proj4Title;
-    document.getElementById('proj4Desc').innerHTML=t.proj4Desc;
-    lang='en'; document.getElementById('langBtn').innerHTML='العربية';
-  } else {
-    // إعادة النصوص للعربي الأصلي
-    document.getElementById('name').innerHTML='فيصل الشراري';
-    document.getElementById('role').innerHTML='هندسة الحاسب الآلي والشبكات • مطور برامج وألعاب';
-    document.getElementById('btnCV').innerHTML='السيرة الذاتية';
-    document.getElementById('btnProjects').innerHTML='اهتمامات ومشاريع';
-    document.getElementById('btnAchievements').innerHTML='الإنجازات';
-    document.getElementById('btnCertificates').innerHTML='الشهادات';
-    document.getElementById('btnContact').innerHTML='تواصل';
-    document.getElementById('cvTitle').innerHTML='📄 ملفات السيرة الذاتية';
-    document.getElementById('cvEN').innerHTML='السيرة بالإنجليزية';
-    document.getElementById('cvAR').innerHTML='السيرة بالعربية';
-    document.getElementById('projectsTitle').innerHTML='💻 اهتمامات ومشاريع';
-    document.getElementById('proj1Title').innerHTML='مشروع التخرج: نظام روبوت RFID';
-    document.getElementById('proj1Desc').innerHTML='نظام روبوت ذكي لتتبع المستخدمين وتقديم المساعدة باستخدام تقنية RFID، مع التحكم وإدارة البيانات بشكل ذكي وفعال.';
-    document.getElementById('proj2Title').innerHTML='مبرمج وشبكات';
-    document.getElementById('proj2Desc').innerHTML='كتبت سكربتات وبرامج لأتمتة الشبكات، إدارة البيانات، والتحكم في الأجهزة المختلفة باستخدام تقنيات متنوعة.';
-    document.getElementById('proj3Title').innerHTML='تطوير البرامج';
-    document.getElementById('proj3Desc').innerHTML='صممت برامج لإدارة المهام والملفات وتسهيل العمليات الداخلية للشركات الصغيرة والمتوسطة، مع مراعاة الأمن والكفاءة.';
-    document.getElementById('proj4Title').innerHTML='تطوير الألعاب';
-    document.getElementById('proj4Desc').innerHTML='طورت ألعاب 2D و3D للكمبيوتر والموبايل، مع دعم اللعب الجماعي، وتطبيق بعض الميزات الذكية لتحسين تجربة المستخدم.';
-    lang='ar'; document.getElementById('langBtn').innerHTML='English';
-  }
-}
-
-/* ---------------- Canvas Network ---------------- */
-const canvas=document.getElementById("networkCanvas");
-const ctx=canvas.getContext("2d");
-canvas.width=window.innerWidth; canvas.height=window.innerHeight;
-window.addEventListener("resize",()=>{canvas.width=window.innerWidth;canvas.height=window.innerHeight;});
-let nodes=[];
-for(let i=0;i<80;i++){nodes.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-0.5)*0.5,vy:(Math.random()-0.5)*0.5});}
-function draw(){ctx.clearRect(0,0,canvas.width,canvas.height);nodes.forEach(n=>{ctx.beginPath();ctx.arc(n.x,n.y,2,0,Math.PI*2);ctx.fillStyle="#00e0ff";ctx.fill();});for(let i=0;i<nodes.length;i++){for(let j=i+1;j<nodes.length;j++){let dx=nodes[i].x-nodes[j].x,dy=nodes[i].y-nodes[j].y,dist=Math.sqrt(dx*dx+dy*dy);if(dist<120){ctx.beginPath();ctx.moveTo(nodes[i].x,nodes[i].y);ctx.lineTo(nodes[j].x,nodes[j].y);ctx.strokeStyle="rgba(0,224,255,0.2)";ctx.stroke();}}}nodes.forEach(n=>{n.x+=n.vx;n.y+=n.vy;if(n.x<0||n.x>canvas.width)n.vx*=-1;if(n.y<0||n.y>canvas.height)n.vy*=-1;});requestAnimationFrame(draw);}
-draw();
-</script>
+    function changeLang(lang) {
+      document.documentElement.lang = lang;
+      document.body.dir = content[lang].dir;
+      for (const id in content[lang]) {
+        if (document.getElementById(id)) {
+          document.getElementById(id).textContent = content[lang][id];
+        }
+      }
+    }
+  </script>
 </body>
 </html>
