@@ -47,7 +47,7 @@
       cursor: pointer;
       font-weight: bold;
     }
-    section {
+        section {
       padding: 80px 20px;
       max-width: 1000px;
       margin: auto;
@@ -122,7 +122,6 @@
     <a href="#certificates" class="btn">Certificates</a>
     <a href="#contact" class="btn">Contact</a>
   </header>
-
   <section id="cv" data-aos="fade-up">
     <h2>📄 CV Files</h2>
     <a href="CV EN.pdf" class="btn" target="_blank">English CV</a>
@@ -179,15 +178,14 @@
   <footer>
     &copy; 2025 Faisal Alsharari. All rights reserved.
   </footer>
-
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init();
+
     function switchLang() {
       window.location.href = "arabic.html";
     }
 
-    // Canvas network background
     const canvas = document.getElementById("networkCanvas");
     const ctx = canvas.getContext("2d");
     canvas.width = window.innerWidth;
@@ -221,3 +219,26 @@
           let dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < 120) {
             ctx.beginPath();
+            ctx.moveTo(nodes[i].x, nodes[i].y);
+            ctx.lineTo(nodes[j].x, nodes[j].y);
+            ctx.strokeStyle = "rgba(0, 200, 255, 0.2)";
+            ctx.stroke();
+          }
+        }
+      }
+
+      for (let i = 0; i < nodes.length; i++) {
+        nodes[i].x += nodes[i].vx;
+        nodes[i].y += nodes[i].vy;
+
+        if (nodes[i].x < 0 || nodes[i].x > canvas.width) nodes[i].vx *= -1;
+        if (nodes[i].y < 0 || nodes[i].y > canvas.height) nodes[i].vy *= -1;
+      }
+
+      requestAnimationFrame(draw);
+    }
+
+    draw();
+  </script>
+</body>
+</html>
