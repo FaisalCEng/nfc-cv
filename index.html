@@ -252,4 +252,133 @@
         btnCertificates: "الشهادات",
         btnContact: "تواصل",
         cvTitle: "📄 ملفات السيرة الذاتية",
-        cv
+        cvEN: "السيرة بالإنجليزية",
+        cvAR: "السيرة بالعربية",
+        projectsTitle: "💻 المشاريع والبرامج",
+        proj1Title: "أدوات تطوير الألعاب",
+        proj1Desc: "صممت ونفذت أدوات لتسهيل تطوير الألعاب وإدارة الأصول وتصميم المستويات، مع دمج ميزات الشبكات عند الحاجة.",
+        proj2Title: "ألعاب متعددة المنصات",
+        proj2Desc: "طورت ألعاب 2D و3D للكمبيوتر والموبايل، مع دعم اللعب الجماعي والتواصل الشبكي الآمن.",
+        proj3Title: "برامج الأتمتة والشبكات",
+        proj3Desc: "أنشأت برامج لأتمتة المهام، ومراقبة الشبكات، وإدارة البيانات بشكل آمن للمشاريع الصغيرة.",
+        proj4Title: "ميزات AI تجريبية",
+        proj4Desc: "تنفيذ سلوكيات ذكية في الألعاب والبرامج مع مراعاة الشبكات للعب الجماعي.",
+        achievementsTitle: "🏆 الإنجازات",
+        certificatesTitle: "📜 الشهادات",
+        contactTitle: "📬 تواصل"
+      },
+      en: {
+        name: "Faisal Alsharari",
+        role: "Computer & Network Engineer • Game & Software Developer",
+        btnCV: "CV",
+        btnProjects: "Projects",
+        btnAchievements: "Achievements",
+        btnCertificates: "Certificates",
+        btnContact: "Contact",
+        cvTitle: "📄 CV Files",
+        cvEN: "English CV",
+        cvAR: "Arabic CV",
+        projectsTitle: "💻 Projects & Software",
+        proj1Title: "Game Development Tools",
+        proj1Desc: "Designed and implemented utilities for game development pipelines, asset management, and level design, integrating networking features where needed.",
+        proj2Title: "Cross-Platform Games",
+        proj2Desc: "Developed 2D & 3D games for PC and mobile platforms, incorporating online multiplayer and secure network communications.",
+        proj3Title: "Automation & Networking Software",
+        proj3Desc: "Created software solutions for automating tasks, network monitoring, and secure data management for small businesses and projects.",
+        proj4Title: "Experimental AI Features",
+        proj4Desc: "Implemented AI-driven behaviors in games and applications, with networking considerations for multiplayer environments.",
+        achievementsTitle: "🏆 Achievements",
+        certificatesTitle: "📜 Certificates",
+        contactTitle: "📬 Contact"
+      }
+    };
+
+    function switchLang() {
+      lang = lang === 'en' ? 'ar' : 'en';
+      const t = translations[lang];
+      document.getElementById('name').innerText = t.name;
+      document.getElementById('role').innerText = t.role;
+      document.getElementById('btnCV').innerText = t.btnCV;
+      document.getElementById('btnProjects').innerText = t.btnProjects;
+      document.getElementById('btnAchievements').innerText = t.btnAchievements;
+      document.getElementById('btnCertificates').innerText = t.btnCertificates;
+      document.getElementById('btnContact').innerText = t.btnContact;
+      document.getElementById('cvTitle').innerText = t.cvTitle;
+      document.getElementById('cvEN').innerText = t.cvEN;
+      document.getElementById('cvAR').innerText = t.cvAR;
+      document.getElementById('projectsTitle').innerText = t.projectsTitle;
+      document.getElementById('proj1Title').innerText = t.proj1Title;
+      document.getElementById('proj1Desc').innerText = t.proj1Desc;
+      document.getElementById('proj2Title').innerText = t.proj2Title;
+      document.getElementById('proj2Desc').innerText = t.proj2Desc;
+      document.getElementById('proj3Title').innerText = t.proj3Title;
+      document.getElementById('proj3Desc').innerText = t.proj3Desc;
+      document.getElementById('proj4Title').innerText = t.proj4Title;
+      document.getElementById('proj4Desc').innerText = t.proj4Desc;
+      document.getElementById('achievementsTitle').innerText = t.achievementsTitle;
+      document.getElementById('certificatesTitle').innerText = t.certificatesTitle;
+      document.getElementById('contactTitle').innerText = t.contactTitle;
+      document.getElementById('langBtn').innerText = lang === 'en' ? 'العربية' : 'English';
+    }
+
+    /* ---------------- Canvas Network ---------------- */
+    const canvas = document.getElementById("networkCanvas");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    window.addEventListener("resize", () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    let nodes = [];
+    for (let i = 0; i < 80; i++) {
+      nodes.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5
+      });
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      nodes.forEach(n => {
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, 2, 0, Math.PI * 2);
+        ctx.fillStyle = "#00e0ff";
+        ctx.fill();
+      });
+
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          let dx = nodes[i].x - nodes[j].x;
+          let dy = nodes[i].y - nodes[j].y;
+          let dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 120) {
+            ctx.beginPath();
+            ctx.moveTo(nodes[i].x, nodes[i].y);
+            ctx.lineTo(nodes[j].x, nodes[j].y);
+            ctx.strokeStyle = "rgba(0, 224, 255, 0.2)";
+            ctx.stroke();
+          }
+        }
+      }
+
+      nodes.forEach(n => {
+        n.x += n.vx;
+        n.y += n.vy;
+
+        if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
+        if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
+      });
+
+      requestAnimationFrame(draw);
+    }
+
+    draw();
+  </script>
+</body>
+</html>
